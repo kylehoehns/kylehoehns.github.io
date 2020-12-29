@@ -3,73 +3,57 @@ module.exports = {
     // Site URL for when it goes live
     siteUrl: `https://elastic-meninsky-aa7c74.netlify.app/`,
     // Your Name
-    name: 'Ryan Fitzgerald',
+    name: 'Kyle Hoehns',
     // Main Site Title
-    title: `Ryan Fitzgerald | Full-Stack Developer`,
+    title: `Kyle Hoehns | Full-Stack Developer`,
     // Description that goes under your name in main bio
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit, ipsum.`,
+    description: `Senior Software Engineer with a history of high-quality application development.`,
     // Optional: Twitter account handle
-    author: `@rfitzio`,
+    author: `@kylehoehns`,
     // Optional: Github account URL
-    github: `https://github.com/ryanfitzgerald`,
+    github: `https://github.com/kylehoehns`,
     // Optional: LinkedIn account URL
-    linkedin: `https://www.linkedin.com/in/ryanafitzgerald/`,
+    linkedin: `https://www.linkedin.com/in/kylehoehns/`,
     // Content of the About Me section
-    about: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus perferendis porro cumque ea error ab voluptatem. Temporibus adipisci exercitationem similique itaque quibusdam laudantium, qui molestiae quas, aut amet animi id.`,
-    // Optional: List your projects, they must have `name` and `description`. `link` is optional.
-    projects: [
-      {
-        name: 'Devfolio',
-        description:
-          'A zero-config and blazing fast personal site + blog built with GatsbyJs and TailwindCSS',
-        link: 'https://github.com/RyanFitzgerald/devfolio',
-      },
-      {
-        name: 'ChromeExtensionKit',
-        description:
-          'Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates',
-        link: 'https://chromeextensionkit.com/?ref=devfolio',
-      },
-      {
-        name: 'Another Cool Project',
-        description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit ducimus perferendis',
-        link: 'https://github.com/RyanFitzgerald/devfolio',
-      },
-    ],
+    about: `I am an accomplished Software Engineer with over 10 years of experience writing full-stack applications for the insurance industry. I have experience with modern backend Java development utilizing many components of the Spring Framework. I also have 4+ years of experience writing a performant frontend in JavaScript utilizing AngularJS.`,
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
     experience: [
       {
-        name: 'Acme Corp',
-        description: 'Full-Stack Developer, February 2020 - Present',
-        link: 'https://github.com/RyanFitzgerald/devfolio',
+        name: 'Berkley Technology Services',
+        description: 'Senior Software Engineer, March 2014 - Present',
+        link: 'https://berkleytechnologyservices.com/'
       },
       {
-        name: 'Globex Corp',
-        description: 'Full-Stack Developer, December 2017 - February 2020',
-        link: 'https://github.com/RyanFitzgerald/devfolio',
+        name: 'Sentry Insurance',
+        description: 'Programmer Analyst II, May 2011 - March 2014',
+        link: 'https://www.sentry.com/'
       },
       {
-        name: 'Hooli',
-        description: 'Full-Stack Developer, May 2015 - December 2017',
-        link: 'https://github.com/RyanFitzgerald/devfolio',
+        name: 'University of Iowa Hospitals and Clinics',
+        description: 'Student Programmer, February 2010 - May 2011',
+        link: 'https://uihc.org/'
       },
+      {
+        name: 'dsmHack',
+        description: 'Charity Hackathon Volunteer, 2017 - Present',
+        link: 'https://dsmhack.org/'
+      }
     ],
     // Optional: List your skills, they must have `name` and `description`.
     skills: [
       {
-        name: 'Languages & Frameworks',
+        name: 'Languages',
         description:
-          'JavaScript (ES6+), Golang, Node.js, Express.js, React, Ruby on Rails, PHP',
+          'Java, JavaScript, Kotlin',
       },
       {
-        name: 'Databases',
-        description: 'MongoDB, PostreSQL, MySQL',
+        name: 'Frameworks',
+        description: 'Spring, Spring Boot, Spring Data, AngularJS',
       },
       {
         name: 'Other',
         description:
-          'Docker, Amazon Web Services (AWS), CI / CD, Microservices, API design, Agile / Scrum',
+          'Docker, CI / CD, Unit Testing, Hypermedia-based API design, Reactive Programming, Agile / Scrum',
       },
     ],
   },
@@ -119,7 +103,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `ADD YOUR TRACKING ID HERE`, // Optional Google Analytics
+        trackingId: `UA-20537868-1`, // Optional Google Analytics
       },
     },
     {
@@ -129,7 +113,7 @@ module.exports = {
         short_name: `devfolio`,
         start_url: `/`,
         background_color: `#663399`,
-        theme_color: `#663399`, // This color appears on mobile
+        theme_color: `#333f99`, // This color appears on mobile
         display: `minimal-ui`,
         icon: `src/images/icon.png`,
       },
