@@ -22,4 +22,4 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
-      - run: npm deploy
+      - run: npm run deploy
