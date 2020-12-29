@@ -47,7 +47,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build && gh-pages -d public -b master"
+    "deploy": "gatsby build && gh-pages -d public -b master -r https://$process.env.GITHUB_TOKEN@github.com/kylehoehns/kylehoehns.github.io.git"
   },
   "repository": {
     "type": "git",
