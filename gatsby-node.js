@@ -83,7 +83,8 @@ exports.createSchemaCustomization = ({ actions }) => {
     type SectionItem {
       name: String!
       description: String!
-      link: String!
+      link: String!,
+      children: [SectionItem]
     }
 
     type MarkdownRemark implements Node {

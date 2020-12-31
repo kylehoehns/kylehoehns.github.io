@@ -7,7 +7,7 @@ const classes = {
   description: 'text-md text-gray-600 font-light',
 };
 
-const SummaryItem = ({ name, description, link = false, internal = false }) => {
+const SummaryItem = ({ name, description, link = false, internal = false, children = []}) => {
   let linkContent;
   if (internal) {
     linkContent = <Link to={link}>{name}</Link>;
@@ -25,6 +25,11 @@ const SummaryItem = ({ name, description, link = false, internal = false }) => {
         {link ? linkContent : name}
       </h3>
       <p className={classes.description}>{description}</p>
+      <ul className="list-disc list-inside pl-2">
+        {(children || []).map((child, index) => 
+          <li key={index} className="pt-1">{child.description}</li>
+        )}
+      </ul>
     </div>
   );
 };
