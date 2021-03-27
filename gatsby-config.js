@@ -172,9 +172,9 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-feed`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        trackingId: `UA-20537868-1`, // Optional Google Analytics
+        id: `G-SV2D32194K`, // Optional Google Tag Manager
       },
     },
     {
