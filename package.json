@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Ryan Fitzgerald",
   "dependencies": {
-    "gatsby": "^2.32.11",
+    "gatsby": "^3.1.2",
     "gatsby-image": "^3.1.0",
     "gatsby-plugin-feed": "^2.13.1",
     "gatsby-plugin-google-tagmanager": "3.1.0",
