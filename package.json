@@ -20,7 +20,7 @@
     "gatsby-remark-responsive-iframe": "^4.0.0",
     "gatsby-remark-smartypants": "^4.0.0",
     "gatsby-source-filesystem": "^3.3.0",
-    "gatsby-transformer-remark": "^3.2.0",
+    "gatsby-transformer-remark": "^4.0.0",
     "gatsby-transformer-sharp": "^3.3.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
