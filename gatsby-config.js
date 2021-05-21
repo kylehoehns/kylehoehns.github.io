@@ -15,7 +15,7 @@ module.exports = {
     // Optional: LinkedIn account URL
     linkedin: `https://www.linkedin.com/in/kylehoehns/`,
     // Content of the About Me section
-    about: `I am an accomplished Software Engineer with over 10 years of experience writing full-stack applications for the insurance industry. I have experience with modern backend Java development utilizing many components of the Spring Framework. I also have 4+ years of experience writing a performant frontend in JavaScript utilizing AngularJS.`,
+    about: `I am an accomplished Software Engineer with over 10 years of experience writing full-stack applications for the insurance industry. I have experience with modern backend Java development utilizing many components of the Spring Framework. I also have 6+ years of experience writing performant frontends in JavaScript utilizing AngularJS.`,
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
     experience: [
       {
