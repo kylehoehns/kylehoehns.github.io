@@ -19,8 +19,13 @@ module.exports = {
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
     experience: [
       {
+        name: 'Source Allies',
+        description: 'Software Engineering Consultant, June 2021 - Present',
+        link: 'https://www.sourceallies.com'
+      },
+      {
         name: 'Berkley Technology Services',
-        description: 'Senior Software Engineer, March 2014 - Present',
+        description: 'Senior Software Engineer, March 2014 - June 2021',
         link: 'https://berkleytechnologyservices.com/',
         children: [
           {
