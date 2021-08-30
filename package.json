@@ -34,7 +34,7 @@
   "devDependencies": {
     "gh-pages": "3.2.3",
     "prettier": "2.3.2",
-    "tailwindcss": "2.2.8"
+    "tailwindcss": "2.2.9"
   },
   "keywords": [
     "gatsby"
