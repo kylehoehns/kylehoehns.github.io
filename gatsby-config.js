@@ -120,16 +120,16 @@ module.exports = {
       {
         name: 'Languages',
         description:
-          'Java, JavaScript, Kotlin',
+          'Java, JavaScript, Kotlin, Python',
       },
       {
         name: 'Frameworks',
-        description: 'Spring, Spring Boot, Spring Data, AngularJS',
+        description: 'Spring, Spring Boot, Spring Data, AngularJS, Serverless',
       },
       {
         name: 'Other',
         description:
-          'Docker, CI / CD, Unit Testing, Hypermedia-based API design, Reactive Programming, Agile / Scrum',
+          'AWS, Docker, CI / CD, Unit Testing, Hypermedia-based API design, Reactive Programming, Infrastructure as Code, Agile / Scrum',
       },
     ],
   },
