@@ -21,7 +21,18 @@ module.exports = {
       {
         name: 'Source Allies',
         description: 'Software Engineering Consultant, June 2021 - Present',
-        link: 'https://www.sourceallies.com'
+        link: 'https://www.sourceallies.com',
+        children: [
+          {
+            description: 'Experience in the AgTech industry designing and building highly-scalable reporting features on AWS. Utilized cloud technologies such as CloudFormation, S3, Lambda, DynamoDB, and SQS. Main application technologies included Python and Typescript.'
+          },
+          {
+            description: 'Assisted partner company with a high-level cost analysis of migrating existing on-premises distributed data center work to AWS.'
+          },
+          {
+            description: 'Led many interviews with internal candidates of varying skill levels for potential employment. Worked to improve the process for remote candidates and helped improve internal handling of reviewing HackerRank results from candidates so involvement across the company could increase.'
+          }
+        ]
       },
       {
         name: 'Berkley Technology Services',
