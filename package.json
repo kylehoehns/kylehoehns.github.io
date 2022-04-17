@@ -23,7 +23,7 @@
     "gatsby-transformer-remark": "5.12.1",
     "gatsby-transformer-sharp": "4.12.1",
     "lodash": "4.17.21",
-    "moment": "2.29.2",
+    "moment": "2.29.3",
     "postcss": "8.4.12",
     "prismjs": "1.28.0",
     "prop-types": "15.8.1",
