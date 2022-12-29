@@ -131,7 +131,7 @@ module.exports = {
       {
         name: 'Languages',
         description:
-          'Java, JavaScript, Kotlin, Python',
+          'Java, JavaScript, Kotlin, Go, Python',
       },
       {
         name: 'Frameworks',
