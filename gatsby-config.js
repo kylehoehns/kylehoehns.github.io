@@ -140,7 +140,7 @@ module.exports = {
       {
         name: 'Other',
         description:
-          'AWS, Docker, CI / CD, Unit Testing, Hypermedia-based API design, Reactive Programming, Infrastructure as Code, Agile / Scrum',
+          'AWS, Docker, CI / CD, Unit Testing, Hypermedia-based API design, Reactive Programming, Infrastructure as Code, Elasticsearch, Agile / Scrum',
       },
     ],
   },
