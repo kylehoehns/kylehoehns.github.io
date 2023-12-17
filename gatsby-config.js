@@ -24,7 +24,7 @@ module.exports = {
         link: 'https://www.sourceallies.com',
         children: [
           {
-            description: 'Member of team tasked with developing and maintaining solution to provide rapid access to agricultural data. Solutions need to be large scale (45+ million req/day) and highly efficient so consumers can quickly and reliably retrieve their agricultural data. Large amount of experience in the observability space creating and monitoring application metrics and advocating for distributed tracing best practices. Infrastructure on AWS utilizes Lambda, ElasticSearch, API Gateway, and ECS. Application technologies include Java and Golang.'
+            description: 'Member of team tasked with developing and maintaining solution to provide rapid access to agricultural data. Solutions need to be large scale (80+ million req/day) and highly efficient so consumers can quickly and reliably retrieve their agricultural data. Large amount of experience in the observability space creating and monitoring application metrics and advocating for distributed tracing best practices. Infrastructure on AWS utilizes Lambda, ElasticSearch, API Gateway, and ECS. Application technologies include Java and Golang.'
           },
           {
             description: 'Experience in the AgTech industry designing and building highly-scalable reporting features on AWS. Utilized cloud technologies such as CloudFormation, S3, Lambda, DynamoDB, and SQS. Main application technologies included Python and Typescript.'
