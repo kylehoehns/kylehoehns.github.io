@@ -21,6 +21,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
   const twitter = get(metadata, 'author', false);
   const github = get(metadata, 'github', false);
   const linkedin = get(metadata, 'linkedin', false);
+  const sessionize = get(metadata, 'sessionize', false)
 
   return (
     <div className={classes.wrapper}>
@@ -55,7 +56,17 @@ const Header = ({ metadata = {}, noBlog = false }) => {
                 className={classes.link}
                 href={`https://twitter.com/${twitter}`}
               >
-                Twitter
+                X
+              </a>
+            </li>
+          )}
+          {sessionize && (
+            <li className={classes.item}>
+              <a
+                className={classes.link}
+                href={sessionize}
+              >
+                Sessionize
               </a>
             </li>
           )}

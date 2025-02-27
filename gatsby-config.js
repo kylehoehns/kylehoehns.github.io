@@ -1,30 +1,43 @@
 module.exports = {
   siteMetadata: {
     // Site URL for when it goes live
-    siteUrl: `https://elastic-meninsky-aa7c74.netlify.app/`,
+    siteUrl: `https://kylehoehns.com`,
     // Your Name
     name: 'Kyle Hoehns',
     // Main Site Title
     title: `Kyle Hoehns`,
     // Description that goes under your name in main bio
-    description: `Senior Software Engineer with a history of high-quality application development.`,
+    description: `Staff Software Engineer with a history of high-quality application development.`,
     // Optional: Twitter account handle
     author: `kylehoehns`,
     // Optional: Github account URL
     github: `https://github.com/kylehoehns`,
     // Optional: LinkedIn account URL
     linkedin: `https://www.linkedin.com/in/kylehoehns/`,
+    sessionize: 'https://sessionize.com/kyle-hoehns',
     // Content of the About Me section
-    about: `I am an accomplished Software Engineer with over 12 years of experience writing full-stack applications for the insurance industry. I have experience with modern backend Java development utilizing many components of the Spring Framework. I also have 6+ years of experience writing performant frontends in JavaScript utilizing AngularJS.`,
+    about: `Kyle is a Staff Software Engineer with over a decade of experience in the design and implementation of complex software solutions. With a strong foundation in backend technologies like Java and Go, Kyle has consistently delivered high-quality, scalable, and efficient solutions across various industries. He is passionate about solving problems and believes in not taking himself too seriously. `,
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
     experience: [
       {
         name: 'Source Allies',
-        description: 'Software Engineering Consultant, June 2021 - Present',
+        description: 'Staff Software Engineering Consultant, June 2021 - Present',
         link: 'https://www.sourceallies.com',
         children: [
           {
-            description: 'Member of team tasked with developing and maintaining solution to provide rapid access to agricultural data. Solutions need to be large scale (80+ million req/day) and highly efficient so consumers can quickly and reliably retrieve their agricultural data. Large amount of experience in the observability space creating and monitoring application metrics and advocating for distributed tracing best practices. Infrastructure on AWS utilizes Lambda, ElasticSearch, API Gateway, and ECS. Application technologies include Java and Golang.'
+            description: 'Led the design and development of large-scale services to provide rapid access to agricultural data, leveraging AWS (Lambda, API Gateway, ECS), OpenSearch/Elasticsearch, Java, and Golang.'
+          },
+          {
+            description: 'Established comprehensive observability practices (metrics and distributed tracing) to proactively monitor application performance and advocate best practices, improving issue detection and resolution.'
+          },
+          {
+            description: 'Refactored a monolithic application into a new Spring Boot microservice with zero downtime, boosting scalability and deployment flexibility while handling 60M+ daily requests.'
+          },
+          {
+            description: 'Spearheaded a zero-downtime migration of the primary data store from AWS OpenSearch to Elastic.co’s Elasticsearch for 80M+ daily requests, significantly enhancing stability and response times.'
+          },
+          {
+            description: 'Created a robust export pipeline utilizing Amazon SNS/SQS for notifications, Databricks (Python) for data processing, and DeltaLake tables on AWS S3 for storage—enabling efficient data processing and analytics.'
           },
           {
             description: 'Experience in the AgTech industry designing and building highly-scalable reporting features on AWS. Utilized cloud technologies such as CloudFormation, S3, Lambda, DynamoDB, and SQS. Main application technologies included Python and Typescript.'
@@ -33,7 +46,7 @@ module.exports = {
             description: 'Assisted partner company with a high-level cost analysis of migrating existing on-premises distributed data center work to AWS.'
           },
           {
-            description: 'Led many interviews with internal candidates of varying skill levels for potential employment. Worked to improve the process for remote candidates and helped improve internal handling of reviewing HackerRank results from candidates so involvement across the company could increase.'
+            description: 'Architected and led major improvements to the company’s hiring pipeline, including spearheading a transition to GitHub Codespaces for a consistent interview environment, building a Slack bot to automate the assignment of HackerRank reviews, integrating AWS Bedrock (Claude 3.5) to parse candidate submissions, and revamping the question bank—significantly enhancing candidate experience, driving interviewer engagement, and increasing overall hiring efficiency.'
           }
         ]
       },
@@ -134,16 +147,16 @@ module.exports = {
       {
         name: 'Languages',
         description:
-          'Java, JavaScript, Kotlin, Go, Python',
+          'Java, Go, Python, JavaScript, Kotlin',
       },
       {
         name: 'Frameworks',
-        description: 'Spring, Spring Boot, Spring Data, AngularJS, Serverless',
+        description: 'Spring, Spring Boot, Spring Data, Serverless',
       },
       {
         name: 'Other',
         description:
-          'AWS, Docker, CI / CD, Unit Testing, Hypermedia-based API design, Reactive Programming, Infrastructure as Code, Elasticsearch, Agile / Scrum',
+          'AWS, Docker, CI / CD, GitHub & GitHub Actions, Unit Testing, Test-Driven Development, Observability, Hypermedia-based API design, Reactive Programming, Infrastructure as Code, Elasticsearch, Agile / Scrum',
       },
     ],
   },
