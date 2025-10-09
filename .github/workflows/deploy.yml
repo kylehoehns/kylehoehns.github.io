@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v5
         with:
-          node-version: 18
+          node-version: 22
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.PUBLISH_TOKEN }}
