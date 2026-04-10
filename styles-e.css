@@ -1,0 +1,165 @@
+/* VARIATION E: Warm Terminal Card — D's warm palette + C's card structure */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: #faf8f5;
+  color: #3d3929;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 680px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e8e0d4;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+}
+
+.container::before {
+  content: '● ● ●';
+  display: block;
+  padding: 12px 16px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #c4b9a8;
+  background: #f5f0ea;
+  border-bottom: 1px solid #e8e0d4;
+}
+
+.hero {
+  padding: 2.5rem 2.5rem 1rem;
+  text-align: center;
+}
+
+.hero-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #c2703e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 1.25rem;
+}
+
+.hero-prompt {
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  color: #7a8a5c;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.hero-name {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin-bottom: 0.1rem;
+  letter-spacing: -0.5px;
+}
+
+.hero-name .accent {
+  color: #c2703e;
+}
+
+.hero-subtitle {
+  font-size: 0.8rem;
+  color: #8a7e6b;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.about {
+  padding: 1rem 2.5rem 1.5rem;
+}
+
+.about p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #5c553f;
+}
+
+.about p + p {
+  margin-top: 0.75rem;
+}
+
+.about p::before {
+  content: '>';
+  color: #7a8a5c;
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  margin-right: 8px;
+}
+
+.accent-link {
+  color: #c2703e;
+  text-decoration: none;
+  border-bottom: 1px dashed #c2703e60;
+}
+
+.accent-link:hover {
+  border-bottom-style: solid;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0 2.5rem 2rem;
+}
+
+.links a {
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #5c553f;
+  background: #f5f0ea;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid #e8e0d4;
+}
+
+.links a::before {
+  content: '$ ';
+  color: #7a8a5c;
+}
+
+.links a:hover {
+  background: #c2703e;
+  color: #ffffff;
+  border-color: #c2703e;
+}
+
+footer {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #c4b9a8;
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+}
+
+@media (max-width: 480px) {
+  body { padding: 1rem; }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .links { justify-content: center; }
+  .about, .links { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
