@@ -333,9 +333,11 @@
 
   // --- brand footer (dots + rule) on non-ladder slides ---
   function addBrandbar(sec){
+    var all = Array.prototype.slice.call(document.querySelectorAll('.slides > section'));
+    var n = all.indexOf(sec) + 1;
     var bar = document.createElement('div');
     bar.className = 'brandbar';
-    bar.innerHTML = '<i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i><i class="d-blue"></i><span class="line"></span>';
+    bar.innerHTML = '<i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i><i class="d-blue"></i><span class="line"></span><span class="num">'+n+'</span>';
     sec.appendChild(bar);
   }
 
@@ -381,7 +383,7 @@
 
   Reveal.initialize({
     width: 1280, height: 720, margin: 0, center: false,
-    hash: true, slideNumber: false, controls: true, progress: true,
+    hash: true, slideNumber: false, controls: false, progress: false,
     transition: 'fade', transitionSpeed: 'fast',
     plugins: [ RevealNotes, RevealHighlight ]
   });

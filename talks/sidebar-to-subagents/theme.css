@@ -166,6 +166,9 @@
 .brandbar{ position:absolute; left:0; right:0; bottom:24px; padding:0 50px; display:flex; align-items:center; }
 .brandbar i{ width:18px; height:18px; border-radius:50%; display:inline-block; margin-right:11px; }
 .brandbar .line{ flex:1; height:3px; background:var(--navy); margin-left:8px; border-radius:2px; }
+.brandbar .num{ flex:0 0 auto; margin-left:16px; width:46px; height:46px; border-radius:50%;
+  background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:20px; box-shadow:0 6px 16px rgba(5,31,82,.22); }
 
 /* ---------- section separators ---------- */
 .reveal .slides > section.slide-sep{ padding:0; display:flex !important; align-items:center; justify-content:center; }
@@ -225,6 +228,7 @@
 .anim .brandbar i:nth-child(3){ animation-delay:.32s; }
 .anim .brandbar i:nth-child(4){ animation-delay:.42s; }
 .anim .brandbar .line{ transform-origin:left center; animation:drawRule .6s cubic-bezier(.22,.61,.36,1) .5s both; }
+.anim .brandbar .num{ animation:popIn .4s ease both; animation-delay:1s; }
 
 /* dot cluster entrance on the closing + connect slides (no line on these) */
 .slide-closing.anim .dots-right i,
