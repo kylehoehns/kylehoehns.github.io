@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Sidebar to Sub-Agents</title>
+  <link rel="stylesheet" href="vendor/reveal/reveal.min.css">
+  <link rel="stylesheet" href="vendor/reveal/plugin/highlight/monokai.min.css">
+  <link rel="stylesheet" href="vendor/lato.css">
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- 1 TITLE -->
+  <section class="slide-title ladder-slide" data-background-color="#051F52">
+    <div class="logo"><img src="sa-logo-white.png" alt="Source Allies"></div>
+    <h1>From Sidebar to Sub-Agents</h1>
+    <p class="subtitle">A Live, Hands-On Intro to Building with AI Agents</p>
+    <p class="meta">Kyle Hoehns &nbsp;·&nbsp; Source Allies</p>
+    <p class="meta accent">CIJUG &nbsp;·&nbsp; July 16, 2026</p>
+    <div class="rule-light"></div>
+    <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
+    <aside class="notes">Welcome / hook (3 min). Two rooms in one: folks who've never opened an AI assistant, and folks who poked at Copilot but never built a skill or sub-agent. Tone: here's what's worked for me, not the one true way. The repo is the star; slides are scaffolding around live demos.</aside>
+  </section>
+
+  <!-- 2 ABOUT SPEAKER -->
+  <section class="slide-content slide-about">
+    <header class="band"><h2>About Your Speaker</h2></header>
+    <div class="body about-grid">
+      <div class="about-text">
+        <p class="about-name">Kyle Hoehns</p>
+        <p class="about-role">Staff Software Engineering Consultant <span>&middot;</span> Source Allies</p>
+        <ul>
+          <li>15+ years shipping complex, production software.</li>
+          <li>Backend roots in <b>Java</b> &amp; <b>Go</b> &mdash; scalable, efficient systems across many industries.</li>
+          <li>Firm believer in not taking myself too seriously.</li>
+        </ul>
+      </div>
+      <figure class="about-photo">
+        <img src="profile.jpg" alt="Kyle Hoehns speaking at a podium">
+      </figure>
+    </div>
+    <aside class="notes">Humble and credible. The last line sets up the honest, here's-what-bit-me tone of the talk. Photo: speaking at a JUG/conference.</aside>
+  </section>
+
+  <!-- SECTION SEPARATOR: Level Up -->
+  <section class="slide-sep sep-cyan ladder-slide" data-background-color="#16BAED">
+    <div class="sep-band"><h2 class="sep-title">Level Up</h2></div>
+    <aside class="notes">Section card. Beat: now we level up. Six levels, each a real branch in the repo.</aside>
+  </section>
+
+  <!-- 4 THE LEVELS (overview) -->
+  <section class="slide-ladder ladder-slide" data-background-color="#051F52">
+    <p class="kicker">THE LEVELS</p>
+    <h2 class="h-ladder">From an empty repo to a team of agents</h2>
+    <p class="watch">We'll go further than most of us are actually using it yet. Each level is a real, runnable branch in the repo.</p>
+    <div class="ladder" data-active="none"></div>
+    <aside class="notes">Show the whole track so the room never loses the thread. We'll flip back here between levels. Honest line: this goes further than most of us use today.</aside>
+  </section>
+
+  <!-- 5 STAGE 0 -->
+  <section class="slide-ladder ladder-slide" data-background-color="#051F52">
+    <p class="kicker">LEVEL 0 / 5</p>
+    <h2 class="h-ladder">We start from nothing</h2>
+    <p class="watch">Blank repo. One trivial endpoint. Zero AI.</p>
+    <p class="cue"><b>Demo:</b> this is our baseline.</p>
+    <div class="ladder" data-active="0"></div>
+    <aside class="notes">Demo (1 min): blank repo, one trivial endpoint. Establish the starting line so the progression is visible.</aside>
+  </section>
+
+  <!-- 6 STAGE 1 -->
+  <section class="slide-ladder ladder-slide" data-background-color="#051F52">
+    <p class="kicker">LEVEL 1 / 5 &nbsp;·&nbsp; HAIKU</p>
+    <h2 class="h-ladder">AI as a smarter search box</h2>
+    <p class="watch">Ask a question, paste a snippet.</p>
+    <p class="cue"><b>Watch:</b> it answers, but your hands still do all the work.</p>
+    <div class="ladder" data-active="1"></div>
+    <aside class="notes">Demo (3 min): sidebar Q&amp;A on Haiku. The phase everyone starts in. Point out: zero changes to your repo yet, it's advice, not action.</aside>
+  </section>
+
+  <!-- 7 STAGE 2 -->
+  <section class="slide-ladder ladder-slide" data-background-color="#051F52">
+    <p class="kicker">LEVEL 2 / 5 &nbsp;·&nbsp; HAIKU</p>
+    <h2 class="h-ladder">Hands move from your keyboard to the assistant's</h2>
+    <p class="watch">Describe the intent; it makes the edit.</p>
+    <p class="cue"><b>Watch:</b> you stop typing code and start directing it.</p>
+    <div class="ladder" data-active="2"></div>
+    <aside class="notes">Demo (4 min): assisted editing on Haiku. Describe intent, it edits. First time the assistant touches your files.</aside>
+  </section>
+
+  <!-- 8 STAGE 3 -->
+  <section class="slide-ladder ladder-slide" data-background-color="#051F52">
+    <p class="kicker">LEVEL 3 / 5 &nbsp;·&nbsp; SWITCH TO SONNET</p>
+    <h2 class="h-ladder">Give it the terminal</h2>
+    <p class="watch">It adds persistence, runs the build, and fixes its own errors.</p>
+    <p class="cue"><b>Watch:</b> the self-correction loop. (Gotcha next.)</p>
+    <div class="ladder" data-active="3"></div>
+    <aside class="notes">Demo (7 min), PROTECT THIS ONE. Agent mode on Sonnet. Name the model switch out loud. It adds persistence, runs the build, self-corrects. Then go to the Maven gotcha.</aside>
+  </section>
+
+  <!-- 9 GOTCHA Maven -->
+  <section class="slide-content build">
+    <header class="band"><h2>Gotcha: the Maven reflex</h2></header>
+    <div class="body">
+      <ul class="labels">
+        <li><span class="lab">What bit us:</span> on a Gradle project, the agent kept reaching for <code>mvn clean install</code>.</li>
+        <li><span class="lab">The fix:</span> an <code>AGENTS.md</code> with project context.</li>
+        <li><span class="lab">The twist:</span> the Claude agent didn't read AGENTS.md natively, so we added a one-line <code>CLAUDE.md</code> that imports it.</li>
+        <li><span class="lab lab-red">Lesson:</span> the standards are still settling. Tooling isn't uniform yet.</li>
+      </ul>
+    </div>
+    <aside class="notes">20-second credibility beat. The CLAUDE.md-imports-AGENTS.md bridge is the memorable detail.</aside>
+  </section>
+
+  <!-- 10 STAGE 4 -->
+  <section class="slide-ladder ladder-slide" data-background-color="#051F52">
+    <p class="kicker">LEVEL 4 / 5 &nbsp;·&nbsp; SONNET</p>
+    <h2 class="h-ladder">Teach it your standards once</h2>
+    <p class="watch">A custom skill auto-triggers and applies your conventions.</p>
+    <p class="cue"><b>Watch:</b> it picks the right imports without being told.</p>
+    <div class="ladder" data-active="4"></div>
+    <aside class="notes">Demo (6 min), PROTECT THIS ONE. Custom skill auto-triggers on Sonnet. Sets up the Spring Boot 4 gotcha next.</aside>
+  </section>
+
+  <!-- 11 GOTCHA Boot4 -->
+  <section class="slide-content build">
+    <header class="band"><h2>Gotcha: stale training vs. a breaking change</h2></header>
+    <div class="body">
+      <ul class="labels">
+        <li><span class="lab">What bit us:</span> Spring Boot 4 moved Jackson to <code>tools.jackson</code> and relocated <code>@AutoConfigureMockMvc</code>. A fast model confidently used the old imports.</li>
+        <li><span class="lab">The fix:</span> the skill carries the current facts, closing the gap.</li>
+        <li><span class="lab lab-red">Lesson:</span> skills inject knowledge the model's training doesn't have.</li>
+        <li><span class="lab lab-green">Bonus:</span> with the stack facts in the skill, cheap Haiku produced the same correct tests as Sonnet. Routing down is viable when context is good.</li>
+      </ul>
+    </div>
+    <aside class="notes">The heart of why skills matter. The "cheap model + sharp skill ≈ expensive model" line ties into the cost thread later.</aside>
+  </section>
+
+  <!-- 12 SPEC -->
+  <section class="slide-content">
+    <header class="band"><h2>No vibe coding: you're in the driver's seat</h2></header>
+    <div class="body">
+      <div class="stickies">
+        <div class="sticky s-red"><span class="tape"></span><span class="s-h">Spec first</span><span class="s-t">Write the spec before any code gets typed.</span></div>
+        <div class="sticky s-cyan"><span class="tape"></span><span class="s-h">Bounded tasks</span><span class="s-t">Split the work into independent, reviewable chunks.</span></div>
+        <div class="sticky s-green"><span class="tape"></span><span class="s-h">Define done</span><span class="s-t">The agent executes; you decide what "done" means.</span></div>
+      </div>
+      <p class="note-line center">You move up the stack, not out of the loop.</p>
+    </div>
+    <aside class="notes">Talk-through, no demo (2 min). The frame for everything after: you specify and review, the agent does the typing.</aside>
+  </section>
+
+  <!-- 15 STAGE 5 -->
+  <section class="slide-ladder ladder-slide" data-background-color="#051F52">
+    <p class="kicker">LEVEL 5 / 5 &nbsp;·&nbsp; SONNET</p>
+    <h2 class="h-ladder">Your first direct reports</h2>
+    <p class="watch">A skill orchestrates a team to build a feature: a 4-wide reviewer fan-out.</p>
+    <p class="cue"><b>Watch:</b> the parent delegates, collects, and applies fixes.</p>
+    <div class="ladder" data-active="5"></div>
+    <aside class="notes">Demo (6 min), PROTECT THIS ONE (the finale). Sub-agents. Use the cooking-show move: kick off the slow part, narrate, reveal the prepared result. A tiny feature (a position filter) keeps it ~5 min.</aside>
+  </section>
+
+  <!-- 16 SUB-AGENT GOTCHAS -->
+  <section class="slide-content build">
+    <header class="band"><h2>What we learned running a team of agents</h2></header>
+    <div class="body">
+      <ul>
+        <li>
+          <span class="recurse"><span>Agents</span><span>sub-agents</span><span>sub-agents</span><span>sub-agents</span><span class="dots">&hellip;</span></span>
+          <span class="recurse-note">Delegation nests as deep as you dare. We kept ours one level deep on purpose &mdash; the limit now is judgment (and token budget), not the tooling.</span>
+        </li>
+        <li>Parallel agents must be read-only or write to separate areas. Reviewers report; the parent applies fixes.</li>
+        <li>Scope reviewers to the diff (<code>git diff HEAD</code>). Unscoped, they flag pre-existing noise.</li>
+        <li>The bottleneck isn't the parallel part. It's the sequential spine: dev, then test, then fix.</li>
+      </ul>
+    </div>
+    <aside class="notes">Four tight credibility beats. Lead beat: sub-agents CAN nest now (Claude Code v2.1.172+) — delegation recurses, so the real limit is discipline and cost, not capability. Live example of "the standards are still settling." We deliberately kept our fan-out one level deep; the parent skill (shown earlier) does the orchestration.</aside>
+  </section>
+
+  <!-- SECTION SEPARATOR: Using it well -->
+  <section class="slide-sep sep-green ladder-slide" data-background-color="#19B95C">
+    <div class="sep-band"><h2 class="sep-title">Where this goes</h2></div>
+    <aside class="notes">Section card. Tone shift: from "look what's possible" to judgment — when not to, cost, tiers, where you are, MCP.</aside>
+  </section>
+
+  <!-- WHERE THIS GOES 1: sub-agents as context firewalls -->
+  <section class="slide-content">
+    <header class="band"><h2>Sub-agents are context firewalls</h2></header>
+    <div class="body">
+      <ul>
+        <li>The real value isn't parallelism or tidy named "agents" &mdash; it's <b>isolation</b>. Each sub-agent gets its own context window.</li>
+        <li>It does the noisy work &mdash; reading dozens of files, chasing dead ends &mdash; and hands back only a short summary.</li>
+        <li>The parent gets the <b>signal, not the noise</b>. Your main thread stays clean.</li>
+        <li>Even nesting is really about context: more windows to keep clutter out of the one that matters.</li>
+      </ul>
+      <p class="note-line center">Long sessions rot as file reads and tool output pile up. Sub-agents push that noise somewhere else.</p>
+    </div>
+    <aside class="notes">The single most important mental model from the field: sub-agents are context hygiene, not a productivity multiplier. "The parent gets the signal, not the noise" (Kyle Redelinghuys). Boris Cherny framed even nested sub-agents as "agents kicking off agents as a way to better manage context." This is why the first sub-agent everyone builds is a read-only explorer.</aside>
+  </section>
+
+  <!-- WHERE THIS GOES 2: the use-case catalog -->
+  <section class="slide-content">
+    <header class="band"><h2>What teams actually hand to sub-agents</h2></header>
+    <div class="body">
+      <div class="twocol">
+        <div class="col">
+          <h3 class="col-h blue">Read-only (report back)</h3>
+          <ul>
+            <li>Explore the codebase &mdash; map how a feature works.</li>
+            <li>Research a library or pattern before you commit.</li>
+            <li>Multi-perspective review: correctness, security, quality.</li>
+            <li>Debug: reproduce, read logs, form a hypothesis.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3 class="col-h green">Scoped writers</h3>
+          <ul>
+            <li>Generate tests &mdash; write access limited to test files.</li>
+            <li>Refactors &amp; migrations &mdash; fan out across worktrees.</li>
+            <li>Docs &amp; docstrings &mdash; route to a cheaper model.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note-line">The litmus test: are the subtasks truly independent, and is the output easy to verify? If not, keep it single-threaded.</p>
+    </div>
+    <aside class="notes">The same ~7 roles recur across Claude Code, Copilot, Cursor, Gemini CLI. Codebase exploration is the highest-volume use (Claude Code ships a built-in Haiku-powered read-only Explore agent). Best practice is tight tool-scoping by role: reviewers get Read/Grep only; implementers get Write/Edit/Bash.</aside>
+  </section>
+
+  <!-- WHERE THIS GOES 3: managing a fleet -->
+  <section class="slide-content">
+    <header class="band"><h2>From writing code to directing a fleet</h2></header>
+    <div class="body">
+      <ul>
+        <li>Worktrees give each agent its own directory and branch &mdash; that idea is now a product surface.</li>
+        <li>Cursor's Agents Window, Windsurf / Devin's Command Center, Copilot CLI's fleet mode: dashboards for many agents at once.</li>
+        <li>One pattern won: a lead owns context and decisions, workers return summaries, and <b>writes stay single-threaded</b>.</li>
+        <li>Reality check &mdash; the tools give you visibility and isolation. Merge conflicts, ordering, and consistency are still yours.</li>
+      </ul>
+    </div>
+    <aside class="notes">The 2026 product story: fleets became a first-class UI surface (Cursor 2.0 to 3.x Agents Window + /multitask; Windsurf/Devin Command Center Kanban; Copilot CLI fleet mode, GA Feb 2026). Vendor framing is identical: the engineer's job shifts to directing a fleet. But coordination is still human &mdash; the Agents Window "does not merge agent output automatically." The orchestrator-worker / hub-and-spoke pattern is the production default.</aside>
+  </section>
+
+  <!-- WHERE THIS GOES 4: the honest state -->
+  <section class="slide-content">
+    <header class="band"><h2>Multi-agent is a power tool, not a default</h2></header>
+    <div class="body">
+      <div class="twocol">
+        <div class="col">
+          <h3 class="col-h green">Worth the fan-out</h3>
+          <ul>
+            <li>High-value work you can actually parallelize.</li>
+            <li>Independent subtasks with verifiable output.</li>
+            <li>Second-opinion review from an agent that didn't write the code.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3 class="col-h red">Keep it single-threaded</h3>
+          <ul>
+            <li>Tightly coupled work needing constant coordination.</li>
+            <li>Exploratory problems you're still thinking through.</li>
+            <li>Anything you can't meaningfully review.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Capstone honesty beat. Supporting stats: a single agent matches or beats multi-agent on ~64% of tasks (Princeton); multi-agent burns ~15x the tokens of a chat (Anthropic); ~40% of multi-agent pilots fail within six months, usually from picking the wrong pattern. METR (2025): experienced devs on familiar code were ~19% slower with AI while feeling ~20% faster. The delegation-gap stat is the through-line of the whole talk &mdash; human judgment is permanent, not transitional.</aside>
+  </section>
+
+  <!-- 19 COST -->
+  <section class="slide-content">
+    <header class="band"><h2>Know what it's costing you</h2></header>
+    <div class="body">
+      <div class="stickies">
+        <div class="sticky s-red"><span class="tape"></span><span class="s-h">Reduce</span><span class="s-t">RTK &mdash; a CLI proxy that compresses output, trimming tokens 60&ndash;90%.</span></div>
+        <div class="sticky s-cyan"><span class="tape"></span><span class="s-h">See</span><span class="s-t">Codeburn &mdash; a local dashboard, spend by task, model, and tool.</span></div>
+        <div class="sticky s-green"><span class="tape"></span><span class="s-h">Route</span><span class="s-t">Haiku for the cheap stuff, Sonnet for the agentic work.</span></div>
+      </div>
+      <p class="note-line center">Routing is a cost lever, not just a quality one.</p>
+    </div>
+    <aside class="notes">Both tools verified June 2026. RTK = reduce (Rust Token Killer); RTK Cloud adds team-level tracking. Codeburn = see (TUI observability, reads session data off disk). Ties back to the model-routing thread.</aside>
+  </section>
+
+  <!-- 23 CLOSING -->
+  <section class="slide-closing ladder-slide" data-background-color="#051F52">
+    <h2 class="h-close">An empty project became a team of agents, and you know how to start.</h2>
+    <p class="close-body">Start small: pick one bounded task, let the assistant draft it, you review.</p>
+    <a class="repo-chip" href="https://github.com/kylehoehns/dugout">Fork github.com/kylehoehns/dugout and walk every level yourself.</a>
+    <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
+    <aside class="notes">Close (2 min). Land the thesis, then the concrete "start small" beat. End on the repo URL.</aside>
+  </section>
+
+  <!-- 25 CONNECT / LINKEDIN -->
+  <section class="slide-connect ladder-slide" data-background-color="#051F52">
+    <h2 class="h-close">Thanks for hanging out!</h2>
+    <div class="connect-row">
+      <div class="qr-box"><img src="qr.svg" alt="LinkedIn QR code for Kyle Hoehns"></div>
+      <div class="connect-text">
+        <p class="connect-lead">Questions? Let's hear them.</p>
+        <p class="handle">linkedin.com/in/kylehoehns</p>
+        <p class="muted">Scan to connect on LinkedIn &mdash; or fork the repo and walk every level yourself.</p>
+      </div>
+    </div>
+    <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
+    <aside class="notes">Final slide: thanks + live Q&amp;A. Leave it up during questions. QR connects to LinkedIn.</aside>
+  </section>
+
+</div>
+</div>
+
+<script src="vendor/reveal/reveal.min.js"></script>
+<script src="vendor/reveal/plugin/notes/notes.min.js"></script>
+<script src="vendor/reveal/plugin/highlight/highlight.min.js"></script>
+<script>
+  // --- ladder ---
+  var RUNGS = ['Blank repo','Search box','Assisted edits','Terminal','Skills','Sub-agents'];
+  // node centers run from 48px to (1140-48)px across the rail; STEP = center-to-center spacing
+  var STEP = 1044 / (RUNGS.length - 1);
+  function buildLadder(el){
+    var active = el.getAttribute('data-active');
+    var act = active === 'none' ? -1 : parseInt(active,10);
+    var rail = '<div class="rail"><div class="rail-line"></div><div class="rail-done" style="width:'+
+      (act>0 ? (act*STEP) : 0)+'px"></div>';
+    var nodes = RUNGS.map(function(label,i){
+      var cls = 'node';
+      if(active!=='none'){ if(i<act) cls+=' done'; else if(i===act) cls+=' active'; else cls+=' future'; }
+      else { cls+=' future'; }
+      return '<div class="'+cls+'"><span class="dot">'+i+'</span><span class="lbl">'+label+'</span></div>';
+    }).join('');
+    el.innerHTML = rail + '<div class="nodes">'+nodes+'</div></div>';
+  }
+
+  // --- brand footer (dots + rule) on non-ladder slides ---
+  function addBrandbar(sec){
+    var bar = document.createElement('div');
+    bar.className = 'brandbar';
+    bar.innerHTML = '<i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i><i class="d-blue"></i><span class="line"></span>';
+    sec.appendChild(bar);
+  }
+
+  // inject the Source Allies mark into the top-right corner of every slide except the title (#1)
+  // separators get the white mark; everyone else gets the colored mark
+  document.querySelectorAll('.slides > section').forEach(function(sec){
+    if(sec.classList.contains('slide-title')) return;
+    var w = document.createElement('img'); w.className='corner-mark'; w.alt='';
+    w.src = sec.classList.contains('slide-sep') ? 'sa-mark-white.png' : 'sa-mark.png';
+    sec.appendChild(w);
+  });
+  document.querySelectorAll('.ladder').forEach(buildLadder);
+  document.querySelectorAll('.slides > section').forEach(function(sec){
+    if(!sec.classList.contains('ladder-slide')) addBrandbar(sec);
+  });
+
+  // progressive reveal: turn list items / cards into fragments on .build slides
+  document.querySelectorAll('section.build .body li').forEach(function(li){ li.classList.add('fragment'); });
+
+
+  // --- level-up animation: grow the cyan rail from the previous level to the current one ---
+  var prevDone = 0;
+  function animateLadder(sec){
+    if(!sec) return;
+    var ladder = sec.querySelector('.ladder'); if(!ladder) return;
+    var done = ladder.querySelector('.rail-done'); if(!done) return;
+    var active = ladder.getAttribute('data-active');
+    var act = active === 'none' ? -1 : parseInt(active,10);
+    var target = act > 0 ? act*STEP : 0;
+    done.style.transition = 'none';
+    done.style.width = prevDone + 'px';
+    void done.offsetWidth;            // force reflow so the next change animates
+    done.style.transition = '';
+    done.style.width = target + 'px';
+    prevDone = target;
+  }
+
+  // --- replay a slide's entrance animations (title, footer dots/line, sticky slap) ---
+  function playEntrance(sec){
+    if(!sec) return;
+    sec.classList.remove('anim'); void sec.offsetWidth; sec.classList.add('anim');
+  }
+
+  Reveal.initialize({
+    width: 1280, height: 720, margin: 0, center: false,
+    hash: true, slideNumber: false, controls: true, progress: true,
+    transition: 'fade', transitionSpeed: 'fast',
+    plugins: [ RevealNotes, RevealHighlight ]
+  });
+
+  Reveal.on('ready', function(e){ animateLadder(e.currentSlide); playEntrance(e.currentSlide); });
+  Reveal.on('slidechanged', function(e){ animateLadder(e.currentSlide); playEntrance(e.currentSlide); });
+</script>
+</body>
+</html>
