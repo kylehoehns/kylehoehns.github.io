@@ -107,11 +107,12 @@
       <ul class="labels">
         <li><span class="lab">What bit us:</span> on a Gradle project, the agent kept reaching for <code>mvn clean install</code>.</li>
         <li><span class="lab">The fix:</span> an <code>AGENTS.md</code> with project context.</li>
-        <li><span class="lab">The twist:</span> the Claude agent didn't read AGENTS.md natively, so we added a one-line <code>CLAUDE.md</code> that imports it.</li>
-        <li><span class="lab lab-red">Lesson:</span> the standards are still settling. Tooling isn't uniform yet.</li>
+        <li><span class="lab">The twist:</span> the Claude agent didn't read <code>AGENTS.md</code> natively, so we added a one-line <code>CLAUDE.md</code> that imports it.</li>
+        <li><span class="lab lab-red">Lesson:</span> give agents an <code>AGENTS.md</code> with what they need <b>every</b> interaction &mdash; build &amp; test commands, how you write tests, version gotchas (&ldquo;don't use Java 21 features&rdquo;). Capture what they get wrong, not niche trivia.</li>
+        <li><span class="lab lab-green">Also:</span> the standards are still settling &mdash; tooling isn't uniform yet.</li>
       </ul>
     </div>
-    <aside class="notes">20-second credibility beat. The CLAUDE.md-imports-AGENTS.md bridge is the memorable detail.</aside>
+    <aside class="notes">20-second credibility beat. Two lessons: the big one &mdash; an AGENTS.md gives agents the context they need on nearly every interaction (build/test commands, your test conventions, version gotchas like "no Java 21 features"); skip the niche stuff, capture what they routinely get wrong. The smaller one &mdash; the CLAUDE.md-imports-AGENTS.md bridge shows the standards are still settling.</aside>
   </section>
 
   <!-- 10 STAGE 4 -->
@@ -138,18 +139,24 @@
     <aside class="notes">The heart of why skills matter. The "cheap model + sharp skill ≈ expensive model" line ties into the cost thread later.</aside>
   </section>
 
+  <!-- SECTION SEPARATOR: going agentic -->
+  <section class="slide-sep sep-red ladder-slide" data-background-color="#E53049">
+    <div class="sep-band"><h2 class="sep-title">From doing to delegating</h2></div>
+    <aside class="notes">Pivot beat (10 sec). Levels 0-4 made one assistant sharper; Level 5 is the leap &mdash; you stop typing and start delegating. Deep breath before the finale demo. Sets up "no vibe coding": how you stay in the driver's seat once a team is doing the work.</aside>
+  </section>
+
   <!-- 12 SPEC -->
   <section class="slide-content">
     <header class="band"><h2>No vibe coding: you're in the driver's seat</h2></header>
     <div class="body">
       <div class="stickies">
         <div class="sticky s-red"><span class="tape"></span><span class="s-h">Spec first</span><span class="s-t">Write the spec before any code gets typed.</span></div>
-        <div class="sticky s-cyan"><span class="tape"></span><span class="s-h">Bounded tasks</span><span class="s-t">Split the work into independent, reviewable chunks.</span></div>
+        <div class="sticky s-cyan"><span class="tape"></span><span class="s-h">Bounded tasks</span><span class="s-t">Independent, reviewable chunks &mdash; the unit you can hand off.</span></div>
         <div class="sticky s-green"><span class="tape"></span><span class="s-h">Define done</span><span class="s-t">The agent executes; you decide what "done" means.</span></div>
       </div>
-      <p class="note-line center">You move up the stack, not out of the loop.</p>
+      <p class="note-line center">Spec it, bound it, define done &mdash; <b>that's</b> what makes it safe to hand off.</p>
     </div>
-    <aside class="notes">Talk-through, no demo (2 min). The frame for everything after: you specify and review, the agent does the typing.</aside>
+    <aside class="notes">Talk-through, no demo (2 min). The on-ramp to Level 5: spec / bound / define-done is exactly what makes delegation safe. This lands right before we hand work to a team of agents &mdash; it answers "isn't this just letting AI run wild?" before the question can form.</aside>
   </section>
 
   <!-- 15 STAGE 5 -->
@@ -183,6 +190,35 @@
   <section class="slide-sep sep-green ladder-slide" data-background-color="#19B95C">
     <div class="sep-band"><h2 class="sep-title">Where this goes</h2></div>
     <aside class="notes">Section card. Tone shift: from "look what's possible" to judgment — when not to, cost, tiers, where you are, MCP.</aside>
+  </section>
+
+  <!-- WHERE THIS GOES 0: skill vs sub-agent decision -->
+  <section class="slide-content">
+    <header class="band"><h2>Skill or agent?</h2></header>
+    <div class="body">
+      <div class="twocol">
+        <div class="col">
+          <h3 class="col-h blue">Skill = a recipe</h3>
+          <ul>
+            <li>Loads into <b>your</b> context window.</li>
+            <li>Teaches <b>HOW</b> &mdash; a procedure, your conventions, fresh facts.</li>
+            <li>Uses the tools you already have.</li>
+            <li>Best for: reusable expertise <b>any</b> agent should apply.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3 class="col-h green">Agent = a coworker</h3>
+          <ul>
+            <li>Spawned as a <b>sub-agent</b> &mdash; its own context window, tools, and model.</li>
+            <li>Isolates <b>WORK</b> &mdash; noise, big or parallel tasks.</li>
+            <li><b>Scoped</b> tools &mdash; least privilege by role.</li>
+            <li>Best for: work that floods your context or fans out.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note-line center">A skill changes <b>behavior</b>; a sub-agent protects <b>context</b>. And they compose &mdash; a sub-agent can use a skill.</p>
+    </div>
+    <aside class="notes">The question that always comes up after seeing skills (Level 4) and sub-agents (Level 5). Rule of thumb: reusable expertise any agent should apply &rarr; skill; a task that touches more than ~5 files or would make a mess in your main convo &rarr; sub-agent. Cost framing: a skill pays distributed token cost (it stays in your context all session); a sub-agent pays startup cost (a fresh context window) but keeps your main thread clean. Common misconception: skills do NOT run in isolation &mdash; that's the sub-agent's job. This slide sets up the next one: "sub-agent protects context" &rarr; sub-agents are context firewalls.</aside>
   </section>
 
   <!-- WHERE THIS GOES 1: sub-agents as context firewalls -->

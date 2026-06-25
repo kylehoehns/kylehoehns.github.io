@@ -177,6 +177,7 @@
   text-shadow:0 3px 9px rgba(0,0,0,.20); }
 .sep-cyan .sep-band{ background:var(--blue); }      /* cyan field, blue band */
 .sep-green .sep-band{ background:var(--navy); }     /* green field, navy band */
+.sep-red .sep-band{ background:var(--navy); }       /* red field, navy band */
 
 /* ---------- sticky notes ---------- */
 .stickies{ display:flex; gap:52px; justify-content:center; margin:26px 0 0; }
