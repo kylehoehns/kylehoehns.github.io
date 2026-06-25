@@ -62,7 +62,7 @@
 
   <!-- 5 STAGE 0 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 0 / 5</p>
+    <p class="kicker">LEVEL 0 / 6</p>
     <h2 class="h-ladder">We start from nothing</h2>
     <p class="watch">Blank repo. One trivial endpoint. Zero AI.</p>
     <p class="cue"><b>Demo:</b> this is our baseline.</p>
@@ -72,7 +72,7 @@
 
   <!-- 6 STAGE 1 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 1 / 5 &nbsp;·&nbsp; HAIKU</p>
+    <p class="kicker">LEVEL 1 / 6 &nbsp;·&nbsp; HAIKU</p>
     <h2 class="h-ladder">AI as a smarter search box</h2>
     <p class="watch">Ask a question, paste a snippet.</p>
     <p class="cue"><b>Watch:</b> it answers, but your hands still do all the work.</p>
@@ -82,7 +82,7 @@
 
   <!-- 7 STAGE 2 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 2 / 5 &nbsp;·&nbsp; HAIKU</p>
+    <p class="kicker">LEVEL 2 / 6 &nbsp;·&nbsp; HAIKU</p>
     <h2 class="h-ladder">Hands move from your keyboard to the assistant's</h2>
     <p class="watch">Describe the intent; it makes the edit.</p>
     <p class="cue"><b>Watch:</b> you stop typing code and start directing it.</p>
@@ -92,7 +92,7 @@
 
   <!-- 8 STAGE 3 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 3 / 5 &nbsp;·&nbsp; SWITCH TO SONNET</p>
+    <p class="kicker">LEVEL 3 / 6 &nbsp;·&nbsp; SWITCH TO SONNET</p>
     <h2 class="h-ladder">Give it the terminal</h2>
     <p class="watch">It adds persistence, runs the build, and fixes its own errors.</p>
     <p class="cue"><b>Watch:</b> the self-correction loop. (Gotcha next.)</p>
@@ -117,7 +117,7 @@
 
   <!-- 10 STAGE 4 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 4 / 5 &nbsp;·&nbsp; SONNET</p>
+    <p class="kicker">LEVEL 4 / 6 &nbsp;·&nbsp; SONNET</p>
     <h2 class="h-ladder">Teach it your standards once</h2>
     <p class="watch">A custom skill auto-triggers and applies your conventions.</p>
     <p class="cue"><b>Watch:</b> it picks the right imports without being told.</p>
@@ -139,10 +139,47 @@
     <aside class="notes">The heart of why skills matter. The "cheap model + sharp skill ≈ expensive model" line ties into the cost thread later.</aside>
   </section>
 
+  <!-- 13 STAGE 5: GUARDRAILS -->
+  <section class="slide-ladder ladder-slide" data-background-color="#051F52">
+    <p class="kicker">LEVEL 5 / 6 &nbsp;·&nbsp; SONNET</p>
+    <h2 class="h-ladder">Let the build hold the line</h2>
+    <p class="watch">Quality gates &mdash; coverage and formatting &mdash; fail the build until the agent complies.</p>
+    <p class="cue"><b>Watch:</b> the same change goes <b>red</b>, and the agent writes the tests itself.</p>
+    <div class="ladder" data-active="5"></div>
+    <aside class="notes">Demo (Stage 5, Sonnet). The repo already enforces 80% coverage (JaCoCo) + Spotless formatting via build.gradle. Make a small change with no tests &rarr; ./gradlew build &rarr; RED on the coverage gate &rarr; the agent reads the failure and writes tests (pulls the writing-tests skill) &rarr; green. The gate communicated intent without me asking. Rehearse the change so it reliably trips the 80% gate; have the recording ready.</aside>
+  </section>
+
+  <!-- 14 GUARDRAILS LESSON -->
+  <section class="slide-content">
+    <header class="band"><h2>Guardrails turn intent into enforcement</h2></header>
+    <div class="body">
+      <div class="twocol">
+        <div class="col">
+          <h3 class="col-h red">Without gates</h3>
+          <ul>
+            <li>Ask for a feature &mdash; it ships the feature, nothing more.</li>
+            <li>No tests, no formatting pass &mdash; nothing <b>told</b> it to.</li>
+            <li>The agent isn't lazy; it just can't see your standards.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3 class="col-h green">With gates</h3>
+          <ul>
+            <li>Same prompt &mdash; <code>./gradlew build</code> goes <b>red</b> on the 80% coverage gate.</li>
+            <li>It reads the failure and writes the tests to get green.</li>
+            <li>Coverage, formatting, lint &mdash; the build enforces them, not you.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note-line center">A failing build is the clearest spec you can hand an agent &mdash; enforce it, don't hope for it.</p>
+    </div>
+    <aside class="notes">The point of Stage 5. Gates communicate intent the way a reviewer would &mdash; automatically, every time. The agent wrote tests because the build demanded them, and pulled the writing-tests skill to do it (skill + gate compose). This matters MORE once you delegate: every sub-agent on the team hits the same wall, so quality holds without you watching each one.</aside>
+  </section>
+
   <!-- SECTION SEPARATOR: going agentic -->
   <section class="slide-sep sep-red ladder-slide" data-background-color="#E53049">
     <div class="sep-band"><h2 class="sep-title">From doing to delegating</h2></div>
-    <aside class="notes">Pivot beat (10 sec). Levels 0-4 made one assistant sharper; Level 5 is the leap &mdash; you stop typing and start delegating. Deep breath before the finale demo. Sets up "no vibe coding": how you stay in the driver's seat once a team is doing the work.</aside>
+    <aside class="notes">Pivot beat (10 sec). Levels 0-5 made one assistant sharper; Level 6 is the leap &mdash; you stop typing and start delegating. Deep breath before the finale demo. Sets up "no vibe coding": how you stay in the driver's seat once a team is doing the work.</aside>
   </section>
 
   <!-- 12 SPEC -->
@@ -156,16 +193,16 @@
       </div>
       <p class="note-line center">Spec it, bound it, define done &mdash; <b>that's</b> what makes it safe to hand off.</p>
     </div>
-    <aside class="notes">Talk-through, no demo (2 min). The on-ramp to Level 5: spec / bound / define-done is exactly what makes delegation safe. This lands right before we hand work to a team of agents &mdash; it answers "isn't this just letting AI run wild?" before the question can form.</aside>
+    <aside class="notes">Talk-through, no demo (2 min). The on-ramp to Level 6: spec / bound / define-done is exactly what makes delegation safe. This lands right before we hand work to a team of agents &mdash; it answers "isn't this just letting AI run wild?" before the question can form.</aside>
   </section>
 
-  <!-- 15 STAGE 5 -->
+  <!-- 16 STAGE 6 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 5 / 5 &nbsp;·&nbsp; SONNET</p>
+    <p class="kicker">LEVEL 6 / 6 &nbsp;·&nbsp; SONNET</p>
     <h2 class="h-ladder">Your first direct reports</h2>
     <p class="watch">A skill orchestrates a team to build a feature: a 4-wide reviewer fan-out.</p>
     <p class="cue"><b>Watch:</b> the parent delegates, collects, and applies fixes.</p>
-    <div class="ladder" data-active="5"></div>
+    <div class="ladder" data-active="6"></div>
     <aside class="notes">Demo (6 min), PROTECT THIS ONE (the finale). Sub-agents. Use the cooking-show move: kick off the slow part, narrate, reveal the prepared result. A tiny feature (a position filter) keeps it ~5 min.</aside>
   </section>
 
@@ -350,15 +387,15 @@
 <script src="vendor/reveal/plugin/highlight/highlight.min.js"></script>
 <script>
   // --- ladder ---
-  var RUNGS = ['Blank repo','Search box','Assisted edits','Terminal','Skills','Sub-agents'];
+  var LEVELS = ['Blank repo','Search box','Assisted edits','Terminal','Skills','Guardrails','Sub-agents'];
   // node centers run from 48px to (1140-48)px across the rail; STEP = center-to-center spacing
-  var STEP = 1044 / (RUNGS.length - 1);
+  var STEP = 1044 / (LEVELS.length - 1);
   function buildLadder(el){
     var active = el.getAttribute('data-active');
     var act = active === 'none' ? -1 : parseInt(active,10);
     var rail = '<div class="rail"><div class="rail-line"></div><div class="rail-done" style="width:'+
       (act>0 ? (act*STEP) : 0)+'px"></div>';
-    var nodes = RUNGS.map(function(label,i){
+    var nodes = LEVELS.map(function(label,i){
       var cls = 'node';
       if(active!=='none'){ if(i<act) cls+=' done'; else if(i===act) cls+=' active'; else cls+=' future'; }
       else { cls+=' future'; }
