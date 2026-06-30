@@ -252,3 +252,28 @@
 .slide-connect.anim .connect-lead{ animation:riseIn .5s ease .4s both; }
 .slide-connect.anim .handle{ animation:riseIn .5s ease .52s both; }
 .slide-connect.anim .connect-text .muted{ animation:riseIn .5s ease .64s both; }
+
+/* ── context-window diagram: signal (main) vs noise (sub-agents) ── */
+.ctxwrap{ display:flex; flex-direction:column; align-items:center; gap:15px; margin-top:6px; }
+.ctx-main{ width:100%; background:#fff; border:3px solid var(--navy); border-radius:14px;
+  padding:15px 22px; box-shadow:0 10px 28px rgba(5,31,82,.12); }
+.ctx-cap{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px; }
+.ctx-cap .who{ font-size:16px; font-weight:900; letter-spacing:1px; text-transform:uppercase; color:var(--navy); }
+.ctx-cap .what{ font-size:17px; font-weight:800; color:var(--green); }
+.ctx-fill{ display:flex; flex-wrap:wrap; gap:10px; }
+.chip{ font-weight:800; border-radius:8px; line-height:1; }
+.chip.sig{ background:var(--green); color:#fff; font-size:19px; padding:11px 18px; }
+.chip.noise{ background:#E6EAF1; color:#8190A8; font-size:13px; font-weight:700; padding:6px 11px; }
+.ctx-returns{ display:flex; gap:24px; width:100%; }
+.ret{ flex:1; position:relative; height:26px; }
+.ret .dn, .ret .up{ position:absolute; left:0; right:0; text-align:center; font-size:16px; font-weight:900; }
+.ret .dn{ color:var(--blue); }
+.ret .up{ color:var(--green); }
+.ret .arrow{ font-size:20px; vertical-align:-2px; }
+.ctx-subs{ display:flex; gap:24px; width:100%; }
+.ctx-sub{ flex:1; background:#F3F5FA; border:2px dashed var(--rail); border-radius:12px; padding:12px 15px; }
+.ctx-subhead{ font-size:14px; font-weight:900; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
+.ctx-sub .ctx-fill{ gap:7px; }
+/* noise chips cascade in when their sub-agent fragment is revealed */
+.ctx-sub.visible .chip.noise{ animation:noisePop .28s ease both; animation-delay:calc(var(--i,0) * .07s); }
+@keyframes noisePop{ from{ opacity:0; transform:translateY(5px) scale(.96); } to{ opacity:1; transform:none; } }

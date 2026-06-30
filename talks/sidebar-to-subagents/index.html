@@ -22,7 +22,6 @@
     <p class="meta accent">CIJUG &nbsp;·&nbsp; July 16, 2026</p>
     <div class="rule-light"></div>
     <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
-    <aside class="notes">Welcome / hook (3 min). Two rooms in one: folks who've never opened an AI assistant, and folks who poked at Copilot but never built a skill or sub-agent. Tone: here's what's worked for me, not the one true way. The repo is the star; slides are scaffolding around live demos.</aside>
   </section>
 
   <!-- 2 ABOUT SPEAKER -->
@@ -42,13 +41,11 @@
         <img src="profile.jpg" alt="Kyle Hoehns speaking at a podium">
       </figure>
     </div>
-    <aside class="notes">Humble and credible. The last line sets up the honest, here's-what-bit-me tone of the talk. Photo: speaking at a JUG/conference.</aside>
   </section>
 
   <!-- SECTION SEPARATOR: Level Up -->
   <section class="slide-sep sep-cyan ladder-slide" data-background-color="#16BAED">
     <div class="sep-band"><h2 class="sep-title">Level Up</h2></div>
-    <aside class="notes">Section card. Beat: now we level up. Six levels, each a real branch in the repo.</aside>
   </section>
 
   <!-- 4 THE LEVELS (overview) -->
@@ -57,7 +54,6 @@
     <h2 class="h-ladder">From an empty repo to a team of agents</h2>
     <p class="watch">We'll go further than most of us are actually using it yet. Each level is a real, runnable branch in the repo.</p>
     <div class="ladder" data-active="none"></div>
-    <aside class="notes">Show the whole track so the room never loses the thread. We'll flip back here between levels. Honest line: this goes further than most of us use today.</aside>
   </section>
 
   <!-- 5 STAGE 0 -->
@@ -67,7 +63,6 @@
     <p class="watch">Blank repo. One trivial endpoint. Zero AI.</p>
     <p class="cue"><b>Demo:</b> this is our baseline.</p>
     <div class="ladder" data-active="0"></div>
-    <aside class="notes">Demo (1 min): blank repo, one trivial endpoint. Establish the starting line so the progression is visible.</aside>
   </section>
 
   <!-- 6 STAGE 1 -->
@@ -77,7 +72,6 @@
     <p class="watch">Ask a question, paste a snippet.</p>
     <p class="cue"><b>Watch:</b> it answers, but your hands still do all the work.</p>
     <div class="ladder" data-active="1"></div>
-    <aside class="notes">Demo (3 min): sidebar Q&amp;A on Haiku. The phase everyone starts in. Point out: zero changes to your repo yet, it's advice, not action.</aside>
   </section>
 
   <!-- 7 STAGE 2 -->
@@ -87,7 +81,6 @@
     <p class="watch">Describe the intent; it makes the edit.</p>
     <p class="cue"><b>Watch:</b> you stop typing code and start directing it.</p>
     <div class="ladder" data-active="2"></div>
-    <aside class="notes">Demo (4 min): assisted editing on Haiku. Describe intent, it edits. First time the assistant touches your files.</aside>
   </section>
 
   <!-- 8 STAGE 3 -->
@@ -97,7 +90,6 @@
     <p class="watch">It adds persistence, runs the build, and fixes its own errors.</p>
     <p class="cue"><b>Watch:</b> the self-correction loop. (Gotcha next.)</p>
     <div class="ladder" data-active="3"></div>
-    <aside class="notes">Demo (7 min), PROTECT THIS ONE. Agent mode on Sonnet. Name the model switch out loud. It adds persistence, runs the build, self-corrects. Then go to the Maven gotcha.</aside>
   </section>
 
   <!-- 9 GOTCHA Maven -->
@@ -107,12 +99,10 @@
       <ul class="labels">
         <li><span class="lab">What bit us:</span> on a Gradle project, the agent kept reaching for <code>mvn clean install</code>.</li>
         <li><span class="lab">The fix:</span> an <code>AGENTS.md</code> with project context.</li>
-        <li><span class="lab">The twist:</span> the Claude agent didn't read <code>AGENTS.md</code> natively, so we added a one-line <code>CLAUDE.md</code> that imports it.</li>
         <li><span class="lab lab-red">Lesson:</span> give agents an <code>AGENTS.md</code> with what they need <b>every</b> interaction &mdash; build &amp; test commands, how you write tests, version gotchas (&ldquo;don't use Java 21 features&rdquo;). Capture what they get wrong, not niche trivia.</li>
         <li><span class="lab lab-green">Also:</span> the standards are still settling &mdash; tooling isn't uniform yet.</li>
       </ul>
     </div>
-    <aside class="notes">20-second credibility beat. Two lessons: the big one &mdash; an AGENTS.md gives agents the context they need on nearly every interaction (build/test commands, your test conventions, version gotchas like "no Java 21 features"); skip the niche stuff, capture what they routinely get wrong. The smaller one &mdash; the CLAUDE.md-imports-AGENTS.md bridge shows the standards are still settling.</aside>
   </section>
 
   <!-- 10 STAGE 4 -->
@@ -122,7 +112,6 @@
     <p class="watch">A custom skill auto-triggers and applies your conventions.</p>
     <p class="cue"><b>Watch:</b> it picks the right imports without being told.</p>
     <div class="ladder" data-active="4"></div>
-    <aside class="notes">Demo (6 min), PROTECT THIS ONE. Custom skill auto-triggers on Sonnet. Sets up the Spring Boot 4 gotcha next.</aside>
   </section>
 
   <!-- 11 GOTCHA Boot4 -->
@@ -136,7 +125,6 @@
         <li><span class="lab lab-green">Bonus:</span> with the stack facts in the skill, cheap Haiku produced the same correct tests as Sonnet. Routing down is viable when context is good.</li>
       </ul>
     </div>
-    <aside class="notes">The heart of why skills matter. The "cheap model + sharp skill ≈ expensive model" line ties into the cost thread later.</aside>
   </section>
 
   <!-- 13 STAGE 5: GUARDRAILS -->
@@ -146,7 +134,6 @@
     <p class="watch">Quality gates &mdash; coverage and formatting &mdash; fail the build until the agent complies.</p>
     <p class="cue"><b>Watch:</b> the same change goes <b>red</b>, and the agent writes the tests itself.</p>
     <div class="ladder" data-active="5"></div>
-    <aside class="notes">Demo (Stage 5, Sonnet). The repo already enforces 80% coverage (JaCoCo) + Spotless formatting via build.gradle. Make a small change with no tests &rarr; ./gradlew build &rarr; RED on the coverage gate &rarr; the agent reads the failure and writes tests (pulls the writing-tests skill) &rarr; green. The gate communicated intent without me asking. Rehearse the change so it reliably trips the 80% gate; have the recording ready.</aside>
   </section>
 
   <!-- 14 GUARDRAILS LESSON -->
@@ -173,13 +160,11 @@
       </div>
       <p class="note-line center">A failing build is the clearest spec you can hand an agent &mdash; enforce it, don't hope for it.</p>
     </div>
-    <aside class="notes">The point of Stage 5. Gates communicate intent the way a reviewer would &mdash; automatically, every time. The agent wrote tests because the build demanded them, and pulled the writing-tests skill to do it (skill + gate compose). This matters MORE once you delegate: every sub-agent on the team hits the same wall, so quality holds without you watching each one.</aside>
   </section>
 
   <!-- SECTION SEPARATOR: going agentic -->
   <section class="slide-sep sep-red ladder-slide" data-background-color="#E53049">
     <div class="sep-band"><h2 class="sep-title">From doing to delegating</h2></div>
-    <aside class="notes">Pivot beat (10 sec). Levels 0-5 made one assistant sharper; Level 6 is the leap &mdash; you stop typing and start delegating. Deep breath before the finale demo. Sets up "no vibe coding": how you stay in the driver's seat once a team is doing the work.</aside>
   </section>
 
   <!-- 12 SPEC -->
@@ -193,7 +178,6 @@
       </div>
       <p class="note-line center">Spec it, bound it, define done &mdash; <b>that's</b> what makes it safe to hand off.</p>
     </div>
-    <aside class="notes">Talk-through, no demo (2 min). The on-ramp to Level 6: spec / bound / define-done is exactly what makes delegation safe. This lands right before we hand work to a team of agents &mdash; it answers "isn't this just letting AI run wild?" before the question can form.</aside>
   </section>
 
   <!-- 16 STAGE 6 -->
@@ -203,30 +187,64 @@
     <p class="watch">A skill orchestrates a team to build a feature: a 4-wide reviewer fan-out.</p>
     <p class="cue"><b>Watch:</b> the parent delegates, collects, and applies fixes.</p>
     <div class="ladder" data-active="6"></div>
-    <aside class="notes">Demo (6 min), PROTECT THIS ONE (the finale). Sub-agents. Use the cooking-show move: kick off the slow part, narrate, reveal the prepared result. A tiny feature (a position filter) keeps it ~5 min.</aside>
-  </section>
-
-  <!-- 16 SUB-AGENT GOTCHAS -->
-  <section class="slide-content build">
-    <header class="band"><h2>What we learned running a team of agents</h2></header>
-    <div class="body">
-      <ul>
-        <li>
-          <span class="recurse"><span>Agents</span><span>sub-agents</span><span>sub-agents</span><span>sub-agents</span><span class="dots">&hellip;</span></span>
-          <span class="recurse-note">Delegation nests as deep as you dare. We kept ours one level deep on purpose &mdash; the limit now is judgment (and token budget), not the tooling.</span>
-        </li>
-        <li>Parallel agents must be read-only or write to separate areas. Reviewers report; the parent applies fixes.</li>
-        <li>Scope reviewers to the diff (<code>git diff HEAD</code>). Unscoped, they flag pre-existing noise.</li>
-        <li>The bottleneck isn't the parallel part. It's the sequential spine: dev, then test, then fix.</li>
-      </ul>
-    </div>
-    <aside class="notes">Four tight credibility beats. Lead beat: sub-agents CAN nest now (Claude Code v2.1.172+) — delegation recurses, so the real limit is discipline and cost, not capability. Live example of "the standards are still settling." We deliberately kept our fan-out one level deep; the parent skill (shown earlier) does the orchestration.</aside>
   </section>
 
   <!-- SECTION SEPARATOR: Using it well -->
   <section class="slide-sep sep-green ladder-slide" data-background-color="#19B95C">
     <div class="sep-band"><h2 class="sep-title">Where this goes</h2></div>
-    <aside class="notes">Section card. Tone shift: from "look what's possible" to judgment — when not to, cost, tiers, where you are, MCP.</aside>
+  </section>
+
+  <!-- WHERE THIS GOES -1: the context window -->
+  <section class="slide-content">
+    <header class="band"><h2>It all comes down to the context window</h2></header>
+    <div class="body">
+      <div class="ctxwrap">
+        <div class="ctx-main">
+          <div class="ctx-cap"><span class="who">Main thread &mdash; your context window</span><span class="what">keep it high-signal</span></div>
+          <div class="ctx-fill">
+            <span class="chip sig">the plan</span>
+            <span class="chip sig fragment zoom-in" data-fragment-index="1">the files to touch</span>
+            <span class="chip sig fragment zoom-in" data-fragment-index="3">a green diff</span>
+            <span class="chip sig fragment zoom-in" data-fragment-index="5">ship it</span>
+          </div>
+        </div>
+        <div class="ctx-returns">
+          <span class="ret">
+            <span class="dn fragment fade-in-then-out" data-fragment-index="0"><span class="arrow">&darr;</span> delegate</span>
+            <span class="up fragment fade-up" data-fragment-index="1"><span class="arrow">&uarr;</span> summary</span>
+          </span>
+          <span class="ret">
+            <span class="dn fragment fade-in-then-out" data-fragment-index="2"><span class="arrow">&darr;</span> delegate</span>
+            <span class="up fragment fade-up" data-fragment-index="3"><span class="arrow">&uarr;</span> summary</span>
+          </span>
+          <span class="ret">
+            <span class="dn fragment fade-in-then-out" data-fragment-index="4"><span class="arrow">&darr;</span> delegate</span>
+            <span class="up fragment fade-up" data-fragment-index="5"><span class="arrow">&uarr;</span> summary</span>
+          </span>
+        </div>
+        <div class="ctx-subs">
+          <div class="ctx-sub fragment fade-up" data-fragment-index="0">
+            <div class="ctx-subhead">sub-agent &middot; explore</div>
+            <div class="ctx-fill">
+              <span class="chip noise" style="--i:0">read 40 files</span><span class="chip noise" style="--i:1">grep</span><span class="chip noise" style="--i:2">dead end</span><span class="chip noise" style="--i:3">backtrack</span><span class="chip noise" style="--i:4">trace imports</span>
+            </div>
+          </div>
+          <div class="ctx-sub fragment fade-up" data-fragment-index="2">
+            <div class="ctx-subhead">sub-agent &middot; build</div>
+            <div class="ctx-fill">
+              <span class="chip noise" style="--i:0">write code</span><span class="chip noise" style="--i:1">run build</span><span class="chip noise" style="--i:2">stack trace</span><span class="chip noise" style="--i:3">retry</span><span class="chip noise" style="--i:4">fix</span>
+            </div>
+          </div>
+          <div class="ctx-sub fragment fade-up" data-fragment-index="4">
+            <div class="ctx-subhead">sub-agent &middot; review</div>
+            <div class="ctx-fill">
+              <span class="chip noise" style="--i:0">read the diff</span><span class="chip noise" style="--i:1">run checks</span><span class="chip noise" style="--i:2">false alarm</span><span class="chip noise" style="--i:3">recheck</span><span class="chip noise" style="--i:4">notes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="note-line center">Each sub-agent floods <b>its own</b> window with noise &mdash; then hands back only the signal. Your main thread stays clean.</p>
+    </div>
   </section>
 
   <!-- WHERE THIS GOES 0: skill vs sub-agent decision -->
@@ -255,7 +273,6 @@
       </div>
       <p class="note-line center">A skill changes <b>behavior</b>; a sub-agent protects <b>context</b>. And they compose &mdash; a sub-agent can use a skill.</p>
     </div>
-    <aside class="notes">The question that always comes up after seeing skills (Level 4) and sub-agents (Level 5). Rule of thumb: reusable expertise any agent should apply &rarr; skill; a task that touches more than ~5 files or would make a mess in your main convo &rarr; sub-agent. Cost framing: a skill pays distributed token cost (it stays in your context all session); a sub-agent pays startup cost (a fresh context window) but keeps your main thread clean. Common misconception: skills do NOT run in isolation &mdash; that's the sub-agent's job. This slide sets up the next one: "sub-agent protects context" &rarr; sub-agents are context firewalls.</aside>
   </section>
 
   <!-- WHERE THIS GOES 1: sub-agents as context firewalls -->
@@ -270,7 +287,6 @@
       </ul>
       <p class="note-line center">Long sessions rot as file reads and tool output pile up. Sub-agents push that noise somewhere else.</p>
     </div>
-    <aside class="notes">The single most important mental model from the field: sub-agents are context hygiene, not a productivity multiplier. "The parent gets the signal, not the noise" (Kyle Redelinghuys). Boris Cherny framed even nested sub-agents as "agents kicking off agents as a way to better manage context." This is why the first sub-agent everyone builds is a read-only explorer.</aside>
   </section>
 
   <!-- WHERE THIS GOES 2: the use-case catalog -->
@@ -298,7 +314,6 @@
       </div>
       <p class="note-line">The litmus test: are the subtasks truly independent, and is the output easy to verify? If not, keep it single-threaded.</p>
     </div>
-    <aside class="notes">The same ~7 roles recur across Claude Code, Copilot, Cursor, Gemini CLI. Codebase exploration is the highest-volume use (Claude Code ships a built-in Haiku-powered read-only Explore agent). Best practice is tight tool-scoping by role: reviewers get Read/Grep only; implementers get Write/Edit/Bash.</aside>
   </section>
 
   <!-- WHERE THIS GOES 3: managing a fleet -->
@@ -312,33 +327,6 @@
         <li>Reality check &mdash; the tools give you visibility and isolation. Merge conflicts, ordering, and consistency are still yours.</li>
       </ul>
     </div>
-    <aside class="notes">The 2026 product story: fleets became a first-class UI surface (Cursor 2.0 to 3.x Agents Window + /multitask; Windsurf/Devin Command Center Kanban; Copilot CLI fleet mode, GA Feb 2026). Vendor framing is identical: the engineer's job shifts to directing a fleet. But coordination is still human &mdash; the Agents Window "does not merge agent output automatically." The orchestrator-worker / hub-and-spoke pattern is the production default.</aside>
-  </section>
-
-  <!-- WHERE THIS GOES 4: the honest state -->
-  <section class="slide-content">
-    <header class="band"><h2>Multi-agent is a power tool, not a default</h2></header>
-    <div class="body">
-      <div class="twocol">
-        <div class="col">
-          <h3 class="col-h green">Worth the fan-out</h3>
-          <ul>
-            <li>High-value work you can actually parallelize.</li>
-            <li>Independent subtasks with verifiable output.</li>
-            <li>Second-opinion review from an agent that didn't write the code.</li>
-          </ul>
-        </div>
-        <div class="col">
-          <h3 class="col-h red">Keep it single-threaded</h3>
-          <ul>
-            <li>Tightly coupled work needing constant coordination.</li>
-            <li>Exploratory problems you're still thinking through.</li>
-            <li>Anything you can't meaningfully review.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <aside class="notes">Capstone honesty beat. Supporting stats: a single agent matches or beats multi-agent on ~64% of tasks (Princeton); multi-agent burns ~15x the tokens of a chat (Anthropic); ~40% of multi-agent pilots fail within six months, usually from picking the wrong pattern. METR (2025): experienced devs on familiar code were ~19% slower with AI while feeling ~20% faster. The delegation-gap stat is the through-line of the whole talk &mdash; human judgment is permanent, not transitional.</aside>
   </section>
 
   <!-- 19 COST -->
@@ -352,7 +340,6 @@
       </div>
       <p class="note-line center">Routing is a cost lever, not just a quality one.</p>
     </div>
-    <aside class="notes">Both tools verified June 2026. RTK = reduce (Rust Token Killer); RTK Cloud adds team-level tracking. Codeburn = see (TUI observability, reads session data off disk). Ties back to the model-routing thread.</aside>
   </section>
 
   <!-- 23 CLOSING -->
@@ -361,7 +348,6 @@
     <p class="close-body">Start small: pick one bounded task, let the assistant draft it, you review.</p>
     <a class="repo-chip" href="https://github.com/kylehoehns/dugout">Fork github.com/kylehoehns/dugout and walk every level yourself.</a>
     <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
-    <aside class="notes">Close (2 min). Land the thesis, then the concrete "start small" beat. End on the repo URL.</aside>
   </section>
 
   <!-- 25 CONNECT / LINKEDIN -->
@@ -376,7 +362,6 @@
       </div>
     </div>
     <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
-    <aside class="notes">Final slide: thanks + live Q&amp;A. Leave it up during questions. QR connects to LinkedIn.</aside>
   </section>
 
 </div>
