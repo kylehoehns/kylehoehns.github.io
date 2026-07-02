@@ -67,7 +67,7 @@
 
   <!-- 6 STAGE 1 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 1 / 6 &nbsp;·&nbsp; HAIKU</p>
+    <p class="kicker">LEVEL 1 / 6 &nbsp;·&nbsp; GITHUB COPILOT &nbsp;·&nbsp; HAIKU</p>
     <h2 class="h-ladder">AI as a smarter search box</h2>
     <p class="watch">Ask a question, paste a snippet.</p>
     <p class="cue"><b>Watch:</b> it answers, but your hands still do all the work.</p>
@@ -76,7 +76,7 @@
 
   <!-- 7 STAGE 2 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 2 / 6 &nbsp;·&nbsp; HAIKU</p>
+    <p class="kicker">LEVEL 2 / 6 &nbsp;·&nbsp; GITHUB COPILOT &nbsp;·&nbsp; HAIKU</p>
     <h2 class="h-ladder">Hands move from your keyboard to the assistant's</h2>
     <p class="watch">Describe the intent; it makes the edit.</p>
     <p class="cue"><b>Watch:</b> you stop typing code and start directing it.</p>
@@ -85,7 +85,7 @@
 
   <!-- 8 STAGE 3 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 3 / 6 &nbsp;·&nbsp; SWITCH TO SONNET</p>
+    <p class="kicker">LEVEL 3 / 6 &nbsp;·&nbsp; SWITCH TO CLAUDE CODE &nbsp;·&nbsp; SONNET</p>
     <h2 class="h-ladder">Give it the terminal</h2>
     <p class="watch">It adds persistence, runs the build, and fixes its own errors.</p>
     <p class="cue"><b>Watch:</b> the self-correction loop. (Gotcha next.)</p>
@@ -107,7 +107,7 @@
 
   <!-- 10 STAGE 4 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">LEVEL 4 / 6 &nbsp;·&nbsp; SONNET</p>
+    <p class="kicker">LEVEL 4 / 6 &nbsp;·&nbsp; BACK TO HAIKU &nbsp;·&nbsp; ON PURPOSE</p>
     <h2 class="h-ladder">Teach it your standards once</h2>
     <p class="watch">A custom skill auto-triggers and applies your conventions.</p>
     <p class="cue"><b>Watch:</b> it picks the right imports without being told.</p>
@@ -184,7 +184,7 @@
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
     <p class="kicker">LEVEL 6 / 6 &nbsp;·&nbsp; SONNET</p>
     <h2 class="h-ladder">Your first direct reports</h2>
-    <p class="watch">A skill orchestrates a team to build a feature: a 4-wide reviewer fan-out.</p>
+    <p class="watch">A skill orchestrates a team to build a feature &mdash; a four-wide review + docs fan-out.</p>
     <p class="cue"><b>Watch:</b> the parent delegates, collects, and applies fixes.</p>
     <div class="ladder" data-active="6"></div>
   </section>
@@ -243,7 +243,7 @@
           </div>
         </div>
       </div>
-      <p class="note-line center">Each sub-agent floods <b>its own</b> window with noise &mdash; then hands back only the signal. Your main thread stays clean.</p>
+      <p class="note-line center">Managing this window is the real skill now &mdash; &ldquo;context engineering.&rdquo; Sub-agents are <b>firewalls</b>: each floods its own window with noise, hands back only signal.</p>
     </div>
   </section>
 
@@ -271,48 +271,52 @@
           </ul>
         </div>
       </div>
-      <p class="note-line center">A skill changes <b>behavior</b>; a sub-agent protects <b>context</b>. And they compose &mdash; a sub-agent can use a skill.</p>
+      <p class="note-line center">A skill changes <b>behavior</b>; a sub-agent protects <b>context</b> &mdash; and they <b>compose</b>. Stack them and one command can run your whole pipeline.</p>
     </div>
   </section>
 
-  <!-- WHERE THIS GOES 1: sub-agents as context firewalls -->
-  <section class="slide-content">
-    <header class="band"><h2>Sub-agents are context firewalls</h2></header>
+  <!-- WHERE THIS GOES: the full ship-it run, drawn as a nested agent tree -->
+  <section class="slide-content tree-slide">
+    <header class="band"><h2>Kick it off, go to lunch</h2></header>
     <div class="body">
-      <ul>
-        <li>The real value isn't parallelism or tidy named "agents" &mdash; it's <b>isolation</b>. Each sub-agent gets its own context window.</li>
-        <li>It does the noisy work &mdash; reading dozens of files, chasing dead ends &mdash; and hands back only a short summary.</li>
-        <li>The parent gets the <b>signal, not the noise</b>. Your main thread stays clean.</li>
-        <li>Even nesting is really about context: more windows to keep clutter out of the one that matters.</li>
-      </ul>
-      <p class="note-line center">Long sessions rot as file reads and tool output pile up. Sub-agents push that noise somewhere else.</p>
-    </div>
-  </section>
-
-  <!-- WHERE THIS GOES 2: the use-case catalog -->
-  <section class="slide-content">
-    <header class="band"><h2>What teams actually hand to sub-agents</h2></header>
-    <div class="body">
-      <div class="twocol">
-        <div class="col">
-          <h3 class="col-h blue">Read-only (report back)</h3>
-          <ul>
-            <li>Explore the codebase &mdash; map how a feature works.</li>
-            <li>Research a library or pattern before you commit.</li>
-            <li>Multi-perspective review: correctness, security, quality.</li>
-            <li>Debug: reproduce, read logs, form a hypothesis.</li>
-          </ul>
+      <div class="runtree">
+        <div class="rt-root">
+          <span class="rt-node root">&#9670; ship-it</span>
+          <span class="rt-cap">one run on a ticket &mdash; then you walk away &#127828;</span>
         </div>
-        <div class="col">
-          <h3 class="col-h green">Scoped writers</h3>
-          <ul>
-            <li>Generate tests &mdash; write access limited to test files.</li>
-            <li>Refactors &amp; migrations &mdash; fan out across worktrees.</li>
-            <li>Docs &amp; docstrings &mdash; route to a cheaper model.</li>
-          </ul>
-        </div>
+        <ul class="rt-list">
+          <li><span class="rt-node">read the ticket</span><span class="rt-meta">Jira / GitHub &middot; CLI or MCP</span></li>
+          <li><span class="rt-node">plan</span><span class="rt-meta"><code>grill-with-docs</code> &rarr; ADRs &amp; a checked plan</span></li>
+          <li><span class="rt-node">spin up a worktree</span><span class="rt-meta">an isolated branch &mdash; safe to run in parallel</span></li>
+          <li>
+            <span class="rt-node live">build the feature</span><span class="rt-meta">the team fans out, in parallel:</span>
+            <div class="rt-team">
+              <span class="rt-leaf">developer</span>
+              <span class="rt-leaf">tester</span>
+              <span class="rt-leaf">reviewer &times;3 &middot; read-only</span>
+              <span class="rt-leaf">doc-writer</span>
+              <span class="rt-gate">&#128274; gate &middot; tests &middot; coverage &middot; format</span>
+            </div>
+          </li>
+          <li><span class="rt-node">ship</span><span class="rt-meta">commit &middot; push &middot; open the PR</span></li>
+          <li><span class="rt-node loop">adversarial review &#8635;</span><span class="rt-meta">PR bots weigh in &rarr; auto-address &rarr; re-run the pipeline</span></li>
+          <li><span class="rt-node done">notify you</span><span class="rt-meta">&ldquo;done&rdquo; &mdash; back from lunch to a green PR</span></li>
+        </ul>
       </div>
-      <p class="note-line">The litmus test: are the subtasks truly independent, and is the output easy to verify? If not, keep it single-threaded.</p>
+      <p class="note-line center">Only safe because the guardrails hold at every branch &mdash; then it's a paved road the team runs, not a gamble.</p>
+    </div>
+  </section>
+
+  <!-- WHERE THIS GOES: generation is cheap, review is the bottleneck -->
+  <section class="slide-content">
+    <header class="band"><h2>Generation is cheap. Review is the bottleneck.</h2></header>
+    <div class="body">
+      <ul class="labels">
+        <li><span class="lab">The flip:</span> writing code is nearly free now &mdash; the scarce thing is <b>trusting</b> what comes back.</li>
+        <li><span class="lab">The evidence:</span> GitHub has run <b>60M+</b> Copilot code reviews; AI-heavy teams merge far more code, but review time balloons &mdash; even METR couldn't measure a clean speedup in 2026.</li>
+        <li><span class="lab lab-green">The answer:</span> so <code>ship-it</code> spends most of its steps on review &mdash; the gates, three scoped reviewers, and the bots on the PR.</li>
+      </ul>
+      <p class="note-line center">Your job moves up the stack: <b>delegate, review, own.</b></p>
     </div>
   </section>
 
@@ -322,23 +326,10 @@
     <div class="body">
       <ul class="labels">
         <li><span class="lab">The shift:</span> less time typing code, more time assigning work, reviewing results, and deciding what's next.</li>
-        <li><span class="lab">The proof:</span> &ldquo;fleet&rdquo; is now a product category &mdash; Cursor's Agents Window, Windsurf / Devin's Command Center, Copilot CLI's fleet mode are cockpits for running many agents at once.</li>
+        <li><span class="lab">The proof:</span> &ldquo;fleet&rdquo; is now its own product surface &mdash; Cursor's Agents Window, Devin Desktop's Agent Command Center (formerly Windsurf), and Copilot CLI's <code>/fleet</code> mode &mdash; cockpits for running many agents at once.</li>
         <li><span class="lab lab-red">The catch:</span> they hand you visibility and isolation; the judgment &mdash; what to merge, in what order, is it even right &mdash; stays yours.</li>
       </ul>
       <p class="note-line center">The tools are racing to make you a manager. The managing is still on you.</p>
-    </div>
-  </section>
-
-  <!-- 19 COST -->
-  <section class="slide-content">
-    <header class="band"><h2>Know what it's costing you</h2></header>
-    <div class="body">
-      <div class="stickies">
-        <div class="sticky s-red"><span class="tape"></span><span class="s-h">Reduce</span><span class="s-t">RTK &mdash; a CLI proxy that compresses output, trimming tokens 60&ndash;90%.</span></div>
-        <div class="sticky s-cyan"><span class="tape"></span><span class="s-h">See</span><span class="s-t">Codeburn &mdash; a local dashboard, spend by task, model, and tool.</span></div>
-        <div class="sticky s-green"><span class="tape"></span><span class="s-h">Route</span><span class="s-t">Haiku for the cheap stuff, Sonnet for the agentic work.</span></div>
-      </div>
-      <p class="note-line center">Routing is a cost lever, not just a quality one.</p>
     </div>
   </section>
 
