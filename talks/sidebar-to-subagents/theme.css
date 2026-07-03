@@ -278,7 +278,7 @@
 .ctx-sub.visible .chip.noise{ animation:noisePop .28s ease both; animation-delay:calc(var(--i,0) * .07s); }
 @keyframes noisePop{ from{ opacity:0; transform:translateY(5px) scale(.96); } to{ opacity:1; transform:none; } }
 
-/* ── ship-it run, drawn as a nested agent tree ("kick it off, go to lunch") ── */
+/* ── ship-feature run, drawn as a nested agent tree ("kick it off, go to lunch") ── */
 .slide-content.tree-slide .body{ padding-top:24px; padding-bottom:24px; }
 .runtree{ margin:2px 0 0; font-weight:800; }
 .rt-root{ display:flex; align-items:center; gap:15px; margin:0 0 1px; }
