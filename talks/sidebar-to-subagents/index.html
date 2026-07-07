@@ -48,14 +48,6 @@
     <div class="sep-band"><h2 class="sep-title">Level Up</h2></div>
   </section>
 
-  <!-- 4 THE LEVELS (overview) -->
-  <section class="slide-ladder ladder-slide" data-background-color="#051F52">
-    <p class="kicker">THE LEVELS</p>
-    <h2 class="h-ladder">From an empty repo to a team of agents</h2>
-    <p class="watch">We'll go further than most of us are actually using it yet. Each level is a real, runnable branch in the repo.</p>
-    <div class="ladder" data-active="none"></div>
-  </section>
-
   <!-- 5 STAGE 0 -->
   <section class="slide-ladder ladder-slide" data-background-color="#051F52">
     <p class="kicker">LEVEL 0 / 6</p>
@@ -142,7 +134,7 @@
     <div class="body">
       <div class="twocol">
         <div class="col">
-          <h3 class="col-h red">Without gates</h3>
+          <h3 class="col-h red">Without guardrails</h3>
           <ul>
             <li>Ask for a feature &mdash; it ships the feature, nothing more.</li>
             <li>No tests, no formatting pass &mdash; nothing <b>told</b> it to.</li>
@@ -150,7 +142,7 @@
           </ul>
         </div>
         <div class="col">
-          <h3 class="col-h green">With gates</h3>
+          <h3 class="col-h green">With guardrails</h3>
           <ul>
             <li>Same prompt &mdash; <code>./gradlew build</code> goes <b>red</b> on the 80% coverage gate.</li>
             <li>It reads the failure and writes the tests to get green.</li>
@@ -285,25 +277,27 @@
           <span class="rt-cap">one run on a ticket &mdash; then you walk away &#127828;</span>
         </div>
         <ul class="rt-list">
-          <li><span class="rt-node">read the ticket</span><span class="rt-meta">Jira / GitHub &middot; CLI or MCP</span></li>
-          <li><span class="rt-node">plan</span><span class="rt-meta"><code>grill-with-docs</code> &rarr; ADRs &amp; a checked plan</span></li>
-          <li><span class="rt-node">spin up a worktree</span><span class="rt-meta">an isolated branch &mdash; safe to run in parallel</span></li>
-          <li>
+          <li class="rt-phase"><span class="rt-phase-badge you">&#9733; You lead</span><span class="rt-phase-t">orchestrate the ticket &mdash; plan it, then kick it off</span></li>
+          <li class="own-you"><span class="rt-node you">read the ticket</span><span class="rt-meta">Jira / GitHub &middot; CLI or MCP</span></li>
+          <li class="own-you"><span class="rt-node you">plan</span><span class="rt-meta"><code>grill-with-docs</code> &rarr; ADRs &amp; a checked plan</span></li>
+          <li class="rt-handoff"><span class="rt-handoff-t">&darr; you say &ldquo;ship it&rdquo; &mdash; the agent takes it from here</span></li>
+          <li class="rt-phase"><span class="rt-phase-badge agent">&#129302; Agent runs solo</span><span class="rt-phase-t">the rest is automatic &mdash; go to lunch &#127828;</span></li>
+          <li class="own-agent"><span class="rt-node">spin up a worktree</span><span class="rt-meta">an isolated branch &mdash; safe to run in parallel</span></li>
+          <li class="own-agent">
             <span class="rt-node live">build the feature</span><span class="rt-meta">the team fans out, in parallel:</span>
             <div class="rt-team">
               <span class="rt-leaf">developer</span>
               <span class="rt-leaf">tester</span>
               <span class="rt-leaf">reviewer &times;3 &middot; read-only</span>
               <span class="rt-leaf">doc-writer</span>
-              <span class="rt-gate">&#128274; gate &middot; tests &middot; coverage &middot; format</span>
+              <span class="rt-gate">&#128274; guardrail &middot; tests &middot; coverage &middot; format</span>
             </div>
           </li>
-          <li><span class="rt-node">ship</span><span class="rt-meta">commit &middot; push &middot; open the PR</span></li>
-          <li><span class="rt-node loop">adversarial review &#8635;</span><span class="rt-meta">PR bots weigh in &rarr; auto-address &rarr; re-run the pipeline</span></li>
-          <li><span class="rt-node done">notify you</span><span class="rt-meta">&ldquo;done&rdquo; &mdash; back from lunch to a green PR</span></li>
+          <li class="own-agent"><span class="rt-node">ship</span><span class="rt-meta">commit &middot; push &middot; open the PR</span></li>
+          <li class="own-agent"><span class="rt-node loop">adversarial review &#8635;</span><span class="rt-meta">PR bots weigh in &rarr; auto-address &rarr; re-run the pipeline</span></li>
+          <li class="own-agent"><span class="rt-node done">notify you</span><span class="rt-meta">&ldquo;done&rdquo; &mdash; back from lunch to a green PR</span></li>
         </ul>
       </div>
-      <p class="note-line center">Only safe because the guardrails hold at every branch &mdash; then it's a paved road the team runs, not a gamble.</p>
     </div>
   </section>
 
@@ -317,19 +311,6 @@
         <li><span class="lab lab-green">The answer:</span> so <code>ship-feature</code> spends most of its steps on review &mdash; the gates, three scoped reviewers, and the bots on the PR.</li>
       </ul>
       <p class="note-line center">Your job moves up the stack: <b>delegate, review, own.</b></p>
-    </div>
-  </section>
-
-  <!-- WHERE THIS GOES 3: managing a fleet -->
-  <section class="slide-content">
-    <header class="band"><h2>From writing code to directing a fleet</h2></header>
-    <div class="body">
-      <ul class="labels">
-        <li><span class="lab">The shift:</span> less time typing code, more time assigning work, reviewing results, and deciding what's next.</li>
-        <li><span class="lab">The proof:</span> &ldquo;fleet&rdquo; is now its own product surface &mdash; Cursor's Agents Window, Devin Desktop's Agent Command Center (formerly Windsurf), and Copilot CLI's <code>/fleet</code> mode &mdash; cockpits for running many agents at once.</li>
-        <li><span class="lab lab-red">The catch:</span> they hand you visibility and isolation; the judgment &mdash; what to merge, in what order, is it even right &mdash; stays yours.</li>
-      </ul>
-      <p class="note-line center">The tools are racing to make you a manager. The managing is still on you.</p>
     </div>
   </section>
 

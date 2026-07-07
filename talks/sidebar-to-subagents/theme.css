@@ -279,7 +279,7 @@
 @keyframes noisePop{ from{ opacity:0; transform:translateY(5px) scale(.96); } to{ opacity:1; transform:none; } }
 
 /* ── ship-feature run, drawn as a nested agent tree ("kick it off, go to lunch") ── */
-.slide-content.tree-slide .body{ padding-top:24px; padding-bottom:24px; }
+.slide-content.tree-slide .body{ padding-top:12px; padding-bottom:12px; }
 .runtree{ margin:2px 0 0; font-weight:800; }
 .rt-root{ display:flex; align-items:center; gap:15px; margin:0 0 1px; }
 .rt-cap{ font-size:18px; font-weight:700; color:var(--muted); }
@@ -302,4 +302,29 @@
   padding:5px 12px; font-size:15px; line-height:1; font-weight:800; }
 .rt-gate{ display:inline-block; background:#EAF0F8; color:var(--navy); border:1.5px solid var(--light);
   border-radius:8px; padding:5px 11px; font-size:14px; font-weight:800; }
-.tree-slide .note-line{ margin-top:16px; }
+.tree-slide .note-line{ margin-top:5px; }
+
+/* --- ownership phases: you-led vs. agent-autonomous --- */
+.tree-slide .rt-node{ padding:3px 13px; }
+.tree-slide .rt-team{ margin-top:3px; margin-bottom:0; }
+.tree-slide .rt-leaf, .tree-slide .rt-gate{ padding-top:4px; padding-bottom:4px; }
+.rt-list > li{ padding-top:0; padding-bottom:0; }
+/* colour the connector rail by who owns the step */
+.rt-list > li.own-you::before,  .rt-list > li.own-you::after{  background:var(--blue); }
+.rt-list > li.own-agent::before,.rt-list > li.own-agent::after{ background:#37a866; }
+/* you-owned step nodes get a blue accent so the leader phase reads at a glance */
+.rt-node.you{ background:#0a2f73; box-shadow:inset 0 0 0 1.5px var(--blue); }
+/* phase-label + handoff rows sit flush with no connector rail */
+.rt-phase, .rt-handoff{ padding-left:2px !important; }
+.rt-phase::before, .rt-phase::after,
+.rt-handoff::before, .rt-handoff::after{ display:none !important; }
+.rt-phase{ margin-top:6px; }
+.rt-phase:first-child{ margin-top:0; }
+.rt-phase-badge{ display:inline-block; border-radius:7px; padding:4px 12px;
+  font-size:15px; font-weight:800; letter-spacing:.01em; }
+.rt-phase-badge.you{ background:var(--blue); color:#fff; }
+.rt-phase-badge.agent{ background:var(--green); color:#fff; }
+.rt-phase-t{ font-size:16px; font-weight:700; color:var(--muted); margin-left:12px; }
+.rt-handoff{ margin:3px 0 2px; }
+.rt-handoff-t{ display:inline-block; font-size:16px; font-weight:800; color:var(--blue);
+  background:#EAF0F8; border:1.5px solid #bcd0ec; border-radius:7px; padding:5px 13px; }
