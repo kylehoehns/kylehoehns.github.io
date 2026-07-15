@@ -90,19 +90,14 @@
     about: function () {
       print(ASCII_KYLE, 'figure');
       printBlank();
-      // whole paragraphs (not hand-wrapped) so text reflows cleanly on any width
+      // kept short so it fits a phone screen; text reflows at any width
       print('<span class="bright">Kyle Hoehns</span> &mdash; Staff Software Engineer, speaker, community leader. ' +
-            'Based in central Iowa. Backend by trade: mostly <span class="bright">Java</span> and <span class="bright">Go</span>.');
+            'Central Iowa. Mostly <span class="bright">Java</span> &amp; <span class="bright">Go</span>.');
       printBlank();
       print('I work at ' + extLink(LINKS.sourceallies, 'Source Allies') +
-            ', helping teams build systems that handle millions of requests without waking anyone ' +
-            'up at 3am. I care about observability, testing, and infrastructure as code &mdash; ' +
-            "mostly because I've been burned by the absence of all three.");
-      printBlank();
-      print('I run the ' + extLink(LINKS.cijug, 'Central Iowa Java Users Group') +
-            ' and get on stage at conferences now and then. I take the work seriously but not myself.');
-      printBlank();
-      print("type <span class=\"lbl\">talks</span>, <span class=\"lbl\">videos</span>, or <span class=\"lbl\">blog</span> to see what I've been up to.", 'dim');
+            ', building systems that handle millions of requests without waking anyone at 3am. ' +
+            'I run the ' + extLink(LINKS.cijug, 'Central Iowa Java Users Group') +
+            ' and speak at conferences &mdash; taking the work seriously, never myself.');
     },
 
     talks: function () {
@@ -308,8 +303,11 @@
   // no boot theatrics — just show who I am and drop to a prompt
   run('about');
   printBlank();
-  print('type <span class="lbl">help</span> to see everything, or tap a command below.', 'dim');
+  print('type <span class="lbl">help</span>, <span class="lbl">talks</span>, <span class="lbl">videos</span>, <span class="lbl">blog</span> — or tap below.', 'dim');
   syncMirror();
+  // start at the top so the KYLE banner + intro are visible; the prompt is
+  // pinned (sticky) so it stays reachable without scrolling the intro away
+  term.scrollTop = 0;
   // auto-focus only on devices with a real keyboard, so mobile doesn't pop one on load
   if (!isTouch) input.focus();
 })();

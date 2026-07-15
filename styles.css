@@ -160,14 +160,19 @@ body {
 
 /* ---------- input line ---------- */
 .term-inputline {
-  position: relative;
+  position: sticky;
+  bottom: 0;
   z-index: 3;
   display: flex;
   align-items: baseline;
   gap: 0.6ch;
-  margin-top: 0.35rem;
+  padding: 0.35rem 0 0.15rem;
   text-shadow: 0 0 6px var(--glow);
   font-size: clamp(0.82rem, 2.4vw, 1rem);
+  /* opaque backing so output scrolls cleanly behind the prompt; keep the
+     upward bleed small so it doesn't dim the line directly above it */
+  background: var(--screen-bg);
+  box-shadow: 0 -5px 6px 0 var(--screen-bg);
 }
 
 .prompt {
