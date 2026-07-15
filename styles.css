@@ -96,6 +96,11 @@ body {
 
 .screen {
   position: relative;
+  /* a real CRT never grows — the tube is a fixed size on every page and the
+     content scrolls inside it. flex column: terminal fills, prompt/keys pin. */
+  display: flex;
+  flex-direction: column;
+  height: min(82vh, 640px);
   background:
     radial-gradient(120% 130% at 50% 0%, #0f160f 0%, var(--screen-bg) 55%, #060906 100%);
   border-radius: 18px;
@@ -116,8 +121,9 @@ body {
 .term {
   position: relative;
   z-index: 3;
-  min-height: min(58vh, 460px);
-  max-height: 68vh;
+  /* fill the fixed monitor and scroll internally — never resize the box */
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--fg-faint) transparent;
@@ -225,6 +231,7 @@ body {
 .keys {
   position: relative;
   z-index: 3;
+  flex: 0 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
@@ -320,13 +327,9 @@ body {
 /* ============================================================
    list pages (/talks, /videos, /blog) — shared card + prompt UI
    ============================================================ */
-/* list pages use the SAME monitor height as the homepage, so the box stays a
-   consistent size across pages; cards scroll inside and the prompt stays pinned
-   (min/max-height + overflow-y:auto are inherited from the base .term rule) */
-.term.list {
-  min-height: min(58vh, 460px);
-  max-height: 68vh;
-}
+/* list pages inherit the fixed-fill behavior from .term, so /talks, /videos,
+   and /blog are the exact same monitor size as the homepage — cards scroll
+   inside and the prompt stays pinned. */
 
 .list-head { margin-bottom: 1.6rem; }
 .list-head .crumb { color: var(--fg-dim); font-size: clamp(0.72rem, 2vw, 0.85rem); margin-bottom: 0.9rem; }
