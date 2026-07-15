@@ -280,12 +280,13 @@
     }
   });
 
-  /* quick-key buttons */
+  /* quick-key buttons — tap just runs the command. only refocus the input on
+     devices with a real keyboard, so mobile doesn't pop a keyboard and jump. */
   keys.addEventListener('click', function (e) {
     var btn = e.target.closest('button[data-cmd]');
     if (!btn) return;
     run(btn.getAttribute('data-cmd'));
-    input.focus();
+    if (!isTouch) input.focus();
   });
 
   /* keep focus in the input — tapping the screen refocuses (kept synchronous
