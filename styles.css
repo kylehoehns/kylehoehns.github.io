@@ -153,7 +153,9 @@ body {
   color: var(--fg-dim);
   line-height: 1.05;
   white-space: pre;
-  overflow-x: auto;
+  /* no overflow:auto here — the banner already fits at every width, and
+     overflow-x:auto silently makes overflow-y:auto too, which Windows
+     renders as a stray scrollbar on the KYLE art */
   font-size: clamp(0.42rem, 2.4vw, 0.8rem);
   letter-spacing: 0;
 }
@@ -318,12 +320,12 @@ body {
 /* ============================================================
    list pages (/talks, /videos, /blog) — shared card + prompt UI
    ============================================================ */
-/* list pages: cap the card area to the monitor height and scroll it
-   internally, so the pinned prompt below never gets clipped off-screen */
+/* list pages use the SAME monitor height as the homepage, so the box stays a
+   consistent size across pages; cards scroll inside and the prompt stays pinned
+   (min/max-height + overflow-y:auto are inherited from the base .term rule) */
 .term.list {
-  min-height: 0;
-  max-height: calc(100dvh - 8rem);
-  overflow-y: auto;
+  min-height: min(58vh, 460px);
+  max-height: 68vh;
 }
 
 .list-head { margin-bottom: 1.6rem; }
