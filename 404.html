@@ -12,11 +12,12 @@
   <style>
     .nf404 { margin: 0.2rem 0 1rem; white-space: pre; color: var(--fg);
       line-height: 1.04; font-size: clamp(0.6rem, 3.2vw, 1.05rem); text-shadow: 0 0 8px var(--glow); }
-    .e404 .term { justify-content: center; }
-    .e404 .go { color: var(--fg-bright); text-decoration: none; }
-    .e404 .go:hover { text-shadow: 0 0 8px var(--glow); }
-    /* this prompt is decorative — keep it in flow, not sticky */
-    .e404 .term-inputline { position: static; margin-top: 0.4rem; box-shadow: none; background: none; }
+    .e404 a { color: var(--fg-bright); text-decoration: none; }
+    .e404 a:hover { text-shadow: 0 0 8px var(--glow); }
+    /* this prompt is in flow (not pinned) — the page is short */
+    .e404 .term-inputline { position: static; margin-top: 0.5rem; box-shadow: none; background: none; }
+    #out .line { display: block; }
+    #out:empty { display: none; }
   </style>
 </head>
 <body>
@@ -33,13 +34,16 @@
      ██║╚██████╔╝     ██║
      ╚═╝ ╚═════╝      ╚═╝</pre>
         <div class="line bright">That page doesn't exist on this machine.</div>
-        <div class="line dim">The command ran; the file didn't. Happens to the best of us.</div>
-        <div class="line">&nbsp;</div>
-        <div class="term-inputline">
-          <span class="prompt">kyle@kylehoehns:~$</span>
-          <span class="mirror"><a href="/" class="go">cd ~</a></span><span class="cursor">&#9646;</span>
-        </div>
-        <div class="line dim" style="margin-top:.3rem">press <span style="color:var(--fg-bright)">enter</span> or tap <a href="/" class="go">cd ~</a> to head home.</div>
+        <div class="line dim">type a command (try <b style="color:var(--fg-bright);font-weight:400">help</b>), or just press <b style="color:var(--fg-bright);font-weight:400">enter</b> to head home.</div>
+        <div class="term-output" id="out" role="log" aria-live="polite"></div>
+        <form class="term-inputline" id="promptForm" autocomplete="off">
+          <label class="prompt" for="cmd">kyle@kylehoehns:~$</label>
+          <span class="input-wrap">
+            <input id="cmd" name="cmd" type="text" autocomplete="off" autocapitalize="off"
+                   autocorrect="off" spellcheck="false" aria-label="Type a command, then press Enter">
+            <span class="mirror" id="mirror" aria-hidden="true"></span><span class="cursor" id="cursor" aria-hidden="true">&#9646;</span>
+          </span>
+        </form>
       </div>
       <div class="scanlines" aria-hidden="true"></div>
       <div class="glow" aria-hidden="true"></div>
@@ -49,18 +53,69 @@
 
   <script>
     (function () {
-      var p = location.pathname + location.search;
-      document.getElementById('path').textContent = p;
+      var out = document.getElementById('out');
+      var form = document.getElementById('promptForm');
+      var input = document.getElementById('cmd');
+      var mirror = document.getElementById('mirror');
+      var cursor = document.getElementById('cursor');
+      var screen = document.querySelector('.screen');
+
+      document.getElementById('path').textContent = location.pathname + location.search;
       document.getElementById('path2').textContent = location.pathname;
-      // enter (or a bare click on the screen) heads home, like completing `cd ~`
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') { location.href = '/'; }
+
+      var SECTIONS = { talks: '/talks/', videos: '/videos/', blog: '/blog/' };
+
+      function print(html, cls) {
+        var d = document.createElement('div');
+        d.className = 'line' + (cls ? ' ' + cls : '');
+        d.innerHTML = html;
+        out.appendChild(d);
+      }
+      function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+      function go(href) { setTimeout(function () { location.href = href; }, 260); }
+      function bare(a) { return a.replace(/^(\.\.\/|~\/|\/)+/, '').replace(/\/+$/, ''); }
+
+      function run(raw) {
+        var line = raw.trim();
+        print('<span style="color:var(--fg-dim)">kyle@kylehoehns:~$</span> ' + esc(line));
+        if (!line) { print('heading home &hellip;', 'accent'); return go('/'); } // empty = home
+        var parts = line.split(/\s+/);
+        var cmd = parts[0].toLowerCase();
+        var arg = bare((parts[1] || '').toLowerCase());
+
+        if (cmd === 'cd') {
+          if (arg === '' || arg === '~' || arg === '..') { print('heading home &hellip;', 'accent'); return go('/'); }
+          if (SECTIONS[arg]) { print('cd <b style="color:var(--fg-bright);font-weight:400">/' + arg + '</b> &hellip;', 'accent'); return go(SECTIONS[arg]); }
+          return print('cd: no such directory: ' + esc(arg), 'err');
+        }
+        if (cmd === 'home' || cmd === 'back' || cmd === '~' || cmd === '..') { print('heading home &hellip;', 'accent'); return go('/'); }
+        if (SECTIONS[cmd]) { print('cd <b style="color:var(--fg-bright);font-weight:400">/' + cmd + '</b> &hellip;', 'accent'); return go(SECTIONS[cmd]); }
+        if (cmd === 'ls') { print('<span style="color:var(--fg-bright)">~/   talks/   videos/   blog/</span>'); return; }
+        if (cmd === 'clear' || cmd === 'cls') { out.innerHTML = ''; return; }
+        if (cmd === 'help' || cmd === '?' || cmd === 'man') {
+          print('you hit a dead link. from here you can:', 'dim');
+          print('  <b style="color:var(--fg-bright);font-weight:400">cd ~</b> / home &mdash; go to the homepage');
+          print('  <b style="color:var(--fg-bright);font-weight:400">talks · videos · blog</b> &mdash; jump straight to a section');
+          print('  <b style="color:var(--fg-bright);font-weight:400">ls</b> &mdash; list the rooms');
+          return;
+        }
+        print('command not found: ' + esc(cmd) + '. try <b style="color:var(--fg-bright);font-weight:400">help</b> or <b style="color:var(--fg-bright);font-weight:400">cd ~</b>.', 'err');
+      }
+
+      function sync() { mirror.textContent = input.value; }
+      input.addEventListener('input', function () {
+        cursor.classList.add('typing'); sync();
+        clearTimeout(input._t); input._t = setTimeout(function () { cursor.classList.remove('typing'); }, 400);
       });
-      document.querySelector('.screen').addEventListener('click', function (e) {
-        if (e.target.closest('a')) return;
+      form.addEventListener('submit', function (e) { e.preventDefault(); var v = input.value; input.value = ''; sync(); run(v); });
+      screen.addEventListener('mousedown', function (e) {
+        if (e.target.closest('a, button, input')) return;
         if (window.getSelection().toString()) return;
-        location.href = '/';
+        input.focus();
       });
+      sync();
+      var isTouch = window.matchMedia && window.matchMedia('(hover: none), (pointer: coarse)').matches;
+      if (!isTouch) input.focus();
     })();
   </script>
 </body>
