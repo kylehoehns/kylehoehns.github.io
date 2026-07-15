@@ -103,10 +103,49 @@
     print('command not found: ' + esc(cmd) + '  —  try <span class="lbl">help</span>', 'err');
   }
 
+  /* ---------- tab completion ---------- */
+  var SLUGS = cards.map(function (c) { return c.slug; });
+  var CMDS = ['cd', 'ls', 'open', 'clear', 'help', 'home', 'back', 'sessionize']
+    .concat(Object.keys(SECTIONS));
+  function commonPrefix(arr) {
+    if (!arr.length) return '';
+    var p = arr[0];
+    for (var i = 1; i < arr.length; i++) {
+      while (arr[i].toLowerCase().indexOf(p.toLowerCase()) !== 0) { p = p.slice(0, -1); if (!p) return ''; }
+    }
+    return p;
+  }
+  function complete() {
+    var parts = input.value.split(/\s+/);
+    var i = parts.length - 1;
+    var candidates;
+    if (i === 0) candidates = CMDS.concat(SLUGS);
+    else if (parts[0].toLowerCase() === 'cd') candidates = Object.keys(SECTIONS).concat(SLUGS);
+    else if (parts[0].toLowerCase() === 'open' || parts[0].toLowerCase() === 'run') candidates = SLUGS;
+    else return;
+    var token = parts[i].toLowerCase();
+    var matches = candidates.filter(function (c) { return c.indexOf(token) === 0; });
+    if (!matches.length) return;
+    if (matches.length === 1) {
+      parts[i] = matches[0];
+    } else {
+      var common = commonPrefix(matches);
+      if (common.length > parts[i].length) parts[i] = common;
+      print('<span class="lbl">' + matches.join('&nbsp;&nbsp;&nbsp;') + '</span>', 'dim');
+    }
+    input.value = parts.join(' ');
+    sync();
+  }
+
   function sync() { mirror.textContent = input.value; }
   input.addEventListener('input', function () {
     cursor.classList.add('typing'); sync();
     clearTimeout(input._t); input._t = setTimeout(function () { cursor.classList.remove('typing'); }, 400);
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab' || input.value.trim() === '') return; // empty prompt Tabs away normally
+    e.preventDefault();
+    complete();
   });
   form.addEventListener('submit', function (e) { e.preventDefault(); var v = input.value; input.value = ''; sync(); run(v); });
   screen.addEventListener('mousedown', function (e) {

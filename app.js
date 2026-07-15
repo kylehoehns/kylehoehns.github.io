@@ -84,7 +84,7 @@
         print('  <span class="lbl">' + pad(r[0], 16) + '</span>' + r[1]);
       });
       print('&nbsp;');
-      print('tip: type a command and hit enter, or tap one below.', 'dim');
+      print('tip: <span class="lbl">tab</span> completes, <span class="lbl">&uarr;</span> recalls history, or tap a command below.', 'dim');
     },
 
     about: function () {
@@ -267,9 +267,58 @@
     run(v);
   });
 
-  /* command history via up/down arrows */
+  /* ---------- tab completion ---------- */
+  // curated public commands (easter eggs stay off the list but still work)
+  var COMPLETIONS = ['about', 'help', 'talks', 'videos', 'blog', 'links', 'cd', 'theme',
+    'clear', 'github', 'linkedin', 'cijug', 'sessionize', 'x', 'strava', 'email'];
+  var CD_DIRS = ['talks', 'videos', 'blog', 'about', 'links', 'github', 'linkedin', 'cijug', 'sessionize'];
+  var THEME_NAMES = ['green', 'amber', 'cyan', 'paper', 'synthwave'];
+
+  function commonPrefix(arr) {
+    if (!arr.length) return '';
+    var p = arr[0];
+    for (var i = 1; i < arr.length; i++) {
+      while (arr[i].toLowerCase().indexOf(p.toLowerCase()) !== 0) {
+        p = p.slice(0, -1);
+        if (!p) return '';
+      }
+    }
+    return p;
+  }
+
+  function complete() {
+    var parts = input.value.split(/\s+/);
+    var i = parts.length - 1;
+    var candidates;
+    if (i === 0) candidates = COMPLETIONS;                       // completing the command
+    else if (parts[0].toLowerCase() === 'cd') candidates = CD_DIRS;      // cd <dir>
+    else if (parts[0].toLowerCase() === 'theme') candidates = THEME_NAMES; // theme <name>
+    else return;
+
+    var token = parts[i].toLowerCase();
+    var matches = candidates.filter(function (c) { return c.indexOf(token) === 0; });
+    if (!matches.length) return;
+
+    if (matches.length === 1) {
+      parts[i] = matches[0];
+    } else {
+      var common = commonPrefix(matches);
+      if (common.length > parts[i].length) parts[i] = common;
+      // second-column list of options, shell-style
+      print('<span class="lbl">' + matches.join('&nbsp;&nbsp;&nbsp;') + '</span>', 'dim');
+    }
+    input.value = parts.join(' ');
+    syncMirror();
+  }
+
+  /* command history via up/down arrows, tab to complete */
   input.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowUp') {
+    if (e.key === 'Tab') {
+      // let an empty prompt Tab away to the quick keys (keyboard nav); otherwise complete
+      if (input.value.trim() === '') return;
+      e.preventDefault();
+      complete();
+    } else if (e.key === 'ArrowUp') {
       if (histIdx > 0) { histIdx--; input.value = history[histIdx]; syncMirror(); e.preventDefault(); }
     } else if (e.key === 'ArrowDown') {
       if (histIdx < history.length - 1) { histIdx++; input.value = history[histIdx]; syncMirror(); }
