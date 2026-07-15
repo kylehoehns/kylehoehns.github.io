@@ -155,6 +155,30 @@ body {
 .line.cmd .prompt-echo { color: var(--fg-dim); }
 .line.cmd .cmd-text { color: var(--fg-bright); }
 
+/* neofetch-style system readout: logo left, stats right */
+.neofetch {
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 0.3rem 0 0.5rem;
+}
+.nf-logo {
+  margin: 0;
+  white-space: pre;
+  color: var(--fg);
+  line-height: 1.05;
+  font-size: clamp(0.34rem, 1.5vw, 0.6rem);
+  text-shadow: 0 0 6px var(--glow);
+}
+.nf-info { font-size: clamp(0.8rem, 2.2vw, 0.95rem); line-height: 1.5; min-width: 0; }
+.nf-title { color: var(--fg-bright); }
+.nf-title b { color: var(--fg); }
+.nf-rule { color: var(--fg-dim); letter-spacing: -1px; overflow: hidden; }
+.nf-k { color: var(--fg-bright); display: inline-block; min-width: 6.2em; }
+.nf-colors { display: flex; gap: 5px; margin-top: 9px; }
+.nf-colors i { width: 15px; height: 15px; border-radius: 2px; display: inline-block; box-shadow: 0 0 6px var(--glow); }
+
 .figure {
   color: var(--fg-dim);
   line-height: 1.05;

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Kyle Hoehns</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0a0e0a">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>try{var p=localStorage.getItem('phosphor');if(p)document.documentElement.setAttribute('data-phosphor',p);}catch(e){}</script>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .nf404 { margin: 0.2rem 0 1rem; white-space: pre; color: var(--fg);
+      line-height: 1.04; font-size: clamp(0.6rem, 3.2vw, 1.05rem); text-shadow: 0 0 8px var(--glow); }
+    .e404 .term { justify-content: center; }
+    .e404 .go { color: var(--fg-bright); text-decoration: none; }
+    .e404 .go:hover { text-shadow: 0 0 8px var(--glow); }
+    /* this prompt is decorative — keep it in flow, not sticky */
+    .e404 .term-inputline { position: static; margin-top: 0.4rem; box-shadow: none; background: none; }
+  </style>
+</head>
+<body>
+  <main class="crt e404" data-phosphor="green">
+    <div class="screen">
+      <div class="term" id="term" tabindex="-1">
+        <div class="line"><span style="color:var(--fg-dim)">kyle@kylehoehns:~$</span> <span style="color:var(--fg-bright)">cd <span id="path">/…</span></span></div>
+        <div class="line err">cd: <span id="path2">/…</span>: No such file or directory</div>
+        <div class="line">&nbsp;</div>
+        <pre class="nf404" aria-label="404">██╗  ██╗ ██████╗ ██╗  ██╗
+██║  ██║██╔═████╗██║  ██║
+███████║██║██╔██║███████║
+╚════██║████╔╝██║╚════██║
+     ██║╚██████╔╝     ██║
+     ╚═╝ ╚═════╝      ╚═╝</pre>
+        <div class="line bright">That page doesn't exist on this machine.</div>
+        <div class="line dim">The command ran; the file didn't. Happens to the best of us.</div>
+        <div class="line">&nbsp;</div>
+        <div class="term-inputline">
+          <span class="prompt">kyle@kylehoehns:~$</span>
+          <span class="mirror"><a href="/" class="go">cd ~</a></span><span class="cursor">&#9646;</span>
+        </div>
+        <div class="line dim" style="margin-top:.3rem">press <span style="color:var(--fg-bright)">enter</span> or tap <a href="/" class="go">cd ~</a> to head home.</div>
+      </div>
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="glow" aria-hidden="true"></div>
+      <div class="flicker" aria-hidden="true"></div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var p = location.pathname + location.search;
+      document.getElementById('path').textContent = p;
+      document.getElementById('path2').textContent = location.pathname;
+      // enter (or a bare click on the screen) heads home, like completing `cd ~`
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { location.href = '/'; }
+      });
+      document.querySelector('.screen').addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        if (window.getSelection().toString()) return;
+        location.href = '/';
+      });
+    })();
+  </script>
+</body>
+</html>

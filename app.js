@@ -18,6 +18,7 @@
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- data ---------- */
+  var START = Date.now();
   var LINKS = {
     github:      'https://github.com/kylehoehns',
     linkedin:    'https://www.linkedin.com/in/kylehoehns/',
@@ -73,6 +74,7 @@
         ['videos',         'recorded talks & technical videos'],
         ['blog',           'posts on the Source Allies blog'],
         ['links',          'everywhere you can find me'],
+        ['neofetch',       'the system readout'],
         ['github',         'code + side projects'],
         ['cijug',          'Central Iowa Java Users Group'],
         ['sessionize',     'full speaking history'],
@@ -132,6 +134,34 @@
       row('sessionize', extLink(LINKS.sessionize));
     },
 
+    neofetch: function () {
+      var theme = document.documentElement.getAttribute('data-phosphor') || 'green';
+      var rows = [
+        ['OS', 'KyleOS (web edition)'],
+        ['Host', 'Source Allies'],
+        ['Role', 'Staff Software Engineer'],
+        ['Shell', 'kbash 5.0'],
+        ['Stack', 'Java &middot; Go'],
+        ['Community', 'CIJUG'],
+        ['Location', 'Central Iowa'],
+        ['Terminal', 'kylehoehns.com'],
+        ['Theme', theme + ' phosphor'],
+        ['Uptime', uptimeStr()]
+      ];
+      var info = '<div class="nf-title"><b>kyle</b>@<b>kylehoehns</b></div>' +
+                 '<div class="nf-rule">' + new Array(18).join('—') + '</div>';
+      rows.forEach(function (r) {
+        info += '<div><span class="nf-k">' + r[0] + '</span>' + r[1] + '</div>';
+      });
+      info += '<div class="nf-colors">' +
+        '<i style="background:var(--fg-faint)"></i><i style="background:var(--fg-dim)"></i>' +
+        '<i style="background:var(--fg)"></i><i style="background:var(--fg-bright)"></i>' +
+        '<i style="background:var(--accent)"></i><i style="background:var(--link)"></i></div>';
+      output.appendChild(el('div', 'neofetch',
+        '<pre class="nf-logo">' + ASCII_KYLE + '</pre><div class="nf-info">' + info + '</div>'));
+      scroll();
+    },
+
     cd: function (arg) {
       var a = (arg || '').toLowerCase().replace(/^(\.\.\/|~\/|\/)+/, '').replace(/\/+$/, '');
       if (a === '' || a === '~' || a === '.') { print("you're already home &mdash; <span class=\"lbl\">~</span>", 'dim'); return; }
@@ -189,6 +219,8 @@
   COMMANDS.man    = COMMANDS.help;
   COMMANDS['?']   = COMMANDS.help;
   COMMANDS.writing = COMMANDS.blog;
+  COMMANDS.sysinfo = COMMANDS.neofetch;
+  COMMANDS.screenfetch = COMMANDS.neofetch;
   ['github', 'linkedin', 'sessionize', 'cijug', 'sourceallies', 'x', 'strava'].forEach(function (k) {
     COMMANDS[k] = function () {
       print('opening <span class="bright">' + k + '</span> &hellip;', 'accent');
@@ -211,6 +243,15 @@
   ].join('\n');
 
   function pad(s, n) { while (s.length < n) s += ' '; return s; }
+
+  function uptimeStr() {
+    var s = Math.floor((Date.now() - START) / 1000);
+    if (s < 60) return s + 's';
+    var m = Math.floor(s / 60); s = s % 60;
+    if (m < 60) return m + 'm ' + s + 's';
+    var h = Math.floor(m / 60); m = m % 60;
+    return h + 'h ' + m + 'm';
+  }
 
   function go(url, external) {
     setTimeout(function () {
@@ -269,7 +310,7 @@
 
   /* ---------- tab completion ---------- */
   // curated public commands (easter eggs stay off the list but still work)
-  var COMPLETIONS = ['about', 'help', 'talks', 'videos', 'blog', 'links', 'cd', 'theme',
+  var COMPLETIONS = ['about', 'help', 'talks', 'videos', 'blog', 'links', 'neofetch', 'cd', 'theme',
     'clear', 'github', 'linkedin', 'cijug', 'sessionize', 'x', 'strava', 'email'];
   var CD_DIRS = ['talks', 'videos', 'blog', 'about', 'links', 'github', 'linkedin', 'cijug', 'sessionize'];
   var THEME_NAMES = ['green', 'amber', 'cyan', 'paper', 'synthwave'];
