@@ -4,49 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kyle Hoehns</title>
-  <meta name="description" content="Kyle Hoehns — Staff Software Engineer, speaker, and community leader.">
+  <meta name="description" content="Kyle Hoehns — Staff Software Engineer, speaker, and community leader. Java, Go, and a healthy refusal to take himself too seriously.">
   <meta property="og:title" content="Kyle Hoehns">
-  <meta property="og:description" content="Staff Software Engineer, speaker, and community leader.">
+  <meta property="og:description" content="Staff Software Engineer, speaker, and community leader. Boot up the terminal.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kylehoehns.com">
+  <meta name="theme-color" content="#0a0e0a">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>try{var p=localStorage.getItem('phosphor');if(p)document.documentElement.setAttribute('data-phosphor',p);}catch(e){}</script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <section class="hero">
-      <img src="img/photo.jpg" alt="Kyle Hoehns giving a presentation" class="hero-photo">
-      <div class="hero-text">
-        <p class="hero-prompt">$ whoami</p>
-        <h1 class="hero-name">Hey, I'm <span class="accent">Kyle</span></h1>
-        <p class="hero-subtitle">Staff Software Engineer · Community Leader · Speaker</p>
+  <main class="crt" data-phosphor="green">
+    <div class="screen">
+      <div class="term" id="term" tabindex="-1">
+        <div class="term-output" id="output" role="log" aria-live="polite" aria-label="Terminal output"></div>
+        <form class="term-inputline" id="promptForm" autocomplete="off">
+          <label class="prompt" for="cmd">kyle@kylehoehns:~$</label>
+          <span class="input-wrap">
+            <input id="cmd" name="cmd" type="text" autocomplete="off" autocapitalize="off"
+                   autocorrect="off" spellcheck="false" aria-label="Type a command, then press Enter">
+            <span class="mirror" id="mirror" aria-hidden="true"></span><span class="cursor" id="cursor" aria-hidden="true">&#9646;</span>
+          </span>
+        </form>
       </div>
-    </section>
+      <nav class="keys" aria-label="Quick commands">
+        <button type="button" data-cmd="help">help</button>
+        <button type="button" data-cmd="about">about</button>
+        <button type="button" data-cmd="talks">talks</button>
+        <button type="button" data-cmd="videos">videos</button>
+        <button type="button" data-cmd="blog">blog</button>
+        <button type="button" data-cmd="github">github</button>
+        <button type="button" data-cmd="linkedin">linkedin</button>
+        <button type="button" data-cmd="cijug">cijug</button>
+      </nav>
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="glow" aria-hidden="true"></div>
+      <div class="flicker" aria-hidden="true"></div>
+    </div>
+  </main>
 
-    <section class="about">
+  <noscript>
+    <div class="noscript">
+      <h1>Kyle Hoehns</h1>
+      <p>Staff Software Engineer · Community Leader · Speaker. I work at
+        <a href="https://www.sourceallies.com">Source Allies</a>, write mostly Java and Go,
+        run the <a href="https://www.cijug.net">Central Iowa Java Users Group</a>, and speak at conferences.</p>
       <p>
-        I work at <a href="https://www.sourceallies.com" target="_blank" rel="noopener" class="accent-link">Source Allies</a>, where I help teams
-        build systems that handle millions of requests without waking anyone up at 3am.
-        I care about observability, testing, and infrastructure as code — mostly because
-        I've been burned by the absence of all three.
+        <a href="/talks/">Talks &amp; slides</a> ·
+        <a href="/videos/">Videos</a> ·
+        <a href="/blog/">Blog</a> ·
+        <a href="https://github.com/kylehoehns">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/kylehoehns/">LinkedIn</a> ·
+        <a href="https://sessionize.com/kyle-hoehns">Sessionize</a>
       </p>
-      <p>
-        I run the <a href="https://www.cijug.net" target="_blank" rel="noopener" class="accent-link">Central Iowa Java Users Group</a> and sometimes
-        talk at conferences. I take the work seriously but not myself, which is probably
-        obvious if you've ever seen some of my slides.
-      </p>
-    </section>
+    </div>
+  </noscript>
 
-    <nav class="links">
-      <a href="https://github.com/kylehoehns" target="_blank" rel="noopener">github</a>
-      <a href="https://www.linkedin.com/in/kylehoehns/" target="_blank" rel="noopener">linkedin</a>
-      <a href="https://sessionize.com/kyle-hoehns" target="_blank" rel="noopener">talks</a>
-      <a href="https://www.cijug.net" target="_blank" rel="noopener">cijug</a>
-    </nav>
-  </div>
-
-  <footer>
-    // no <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/aop/framework/AbstractSingletonProxyFactoryBean.html" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">AbstractSingletonProxyFactoryBean</a> was needed
-  </footer>
+  <script src="app.js"></script>
 </body>
 </html>

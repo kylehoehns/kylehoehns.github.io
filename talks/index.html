@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talks — Kyle Hoehns</title>
+  <meta name="description" content="Slides and decks from Kyle Hoehns' conference and user-group talks.">
+  <meta property="og:title" content="Talks — Kyle Hoehns">
+  <meta property="og:description" content="Slides and decks from Kyle Hoehns' talks.">
+  <meta name="theme-color" content="#0a0e0a">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>try{var p=localStorage.getItem('phosphor');if(p)document.documentElement.setAttribute('data-phosphor',p);}catch(e){}</script>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="crt" data-phosphor="green">
+    <div class="screen">
+      <div class="term list" data-cwd="~/talks" data-section="talks">
+        <header class="list-head">
+          <div class="crumb"><a href="/">&larr; cd ~</a></div>
+          <h1>talks</h1>
+          <p>Slides and decks from conference and user-group talks. Best viewed full-screen; arrow keys or space to advance.</p>
+        </header>
+
+        <ul class="card-list">
+          <li>
+            <a class="card" href="/talks/sidebar-to-subagents/" data-slug="sidebar-to-subagents">
+              <div class="meta-row"><span class="dot"></span> CIJUG &middot; 2026 &middot; reveal.js</div>
+              <h2>From Sidebar to Sub-Agents</h2>
+              <p>A live, hands-on intro to building with AI agents — climbing the ladder from autocomplete to sub-agents doing the work while you direct.</p>
+              <span class="open"><span class="sig">$</span> open sidebar <span class="ret">&#8629;</span></span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="list-foot">
+          Want the full speaking history — abstracts, past sessions, and where I'll be next?
+          It lives on <a href="https://sessionize.com/kyle-hoehns" target="_blank" rel="noopener">Sessionize</a>.
+        </div>
+
+        <div class="list-term">
+          <p class="hint">tap a deck above, or type the command on it (<b>open&nbsp;sidebar</b>). <b>cd&nbsp;~</b> heads home; <b>help</b> lists the rest.</p>
+          <div class="term-output" id="tlog" role="log" aria-live="polite" aria-label="Terminal output"></div>
+          <form class="term-inputline" id="tform" autocomplete="off">
+            <label class="prompt" for="tcmd">kyle@kylehoehns:~/talks$</label>
+            <span class="input-wrap">
+              <input id="tcmd" name="tcmd" type="text" autocomplete="off" autocapitalize="off"
+                     autocorrect="off" spellcheck="false" aria-label="Type a command, then press Enter">
+              <span class="mirror" id="tmirror" aria-hidden="true"></span><span class="cursor" id="tcursor" aria-hidden="true">&#9646;</span>
+            </span>
+          </form>
+        </div>
+      </div>
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="glow" aria-hidden="true"></div>
+      <div class="flicker" aria-hidden="true"></div>
+    </div>
+  </main>
+
+  <script src="/list.js"></script>
+</body>
+</html>
