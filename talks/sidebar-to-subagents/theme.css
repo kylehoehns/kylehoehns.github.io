@@ -157,6 +157,15 @@
 .handle{ color:var(--cyan); font-size:26px; font-weight:700; margin:0 0 18px; }
 .connect-text .muted{ color:#AEB9CE; font-size:22px; max-width:560px; line-height:1.4; margin:0; }
 
+/* dual-QR finale: two matched codes side by side */
+.connect-dual{ display:flex; justify-content:center; align-items:flex-start; gap:120px; margin:4px 0 26px; }
+.qr-card{ display:flex; flex-direction:column; align-items:center; text-align:center; margin:0; }
+.qr-card .qr-box{ width:230px; height:230px; }
+.qr-cap{ margin-top:18px; }
+.qr-lead{ display:block; color:#fff; font-size:26px; font-weight:800; }
+.qr-sub{ display:block; color:#AEB9CE; font-size:19px; line-height:1.35; margin-top:6px; max-width:300px; }
+.connect-q{ color:var(--cyan); font-size:26px; font-weight:700; text-align:center; margin:6px 0 0; }
+
 /* brand dots (shared) */
 .dots-right{ position:absolute; right:80px; bottom:78px; display:flex; gap:12px; }
 .dots-right i{ width:24px; height:24px; border-radius:50%; display:inline-block; }
@@ -248,10 +257,10 @@
 
 /* connect slide: heading rises, QR pops, text rises in sequence */
 .slide-connect.anim .h-close{ animation:riseIn .6s ease both; }
-.slide-connect.anim .qr-box{ animation:popIn .6s cubic-bezier(.34,1.56,.64,1) .25s both; }
-.slide-connect.anim .connect-lead{ animation:riseIn .5s ease .4s both; }
-.slide-connect.anim .handle{ animation:riseIn .5s ease .52s both; }
-.slide-connect.anim .connect-text .muted{ animation:riseIn .5s ease .64s both; }
+.slide-connect.anim .qr-card{ animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both; }
+.slide-connect.anim .qr-card:nth-child(1){ animation-delay:.28s; }
+.slide-connect.anim .qr-card:nth-child(2){ animation-delay:.42s; }
+.slide-connect.anim .connect-q{ animation:riseIn .5s ease .64s both; }
 
 /* ── context-window diagram: signal (main) vs noise (sub-agents) ── */
 .ctxwrap{ display:flex; flex-direction:column; align-items:center; gap:15px; margin-top:6px; }

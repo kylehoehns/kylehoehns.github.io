@@ -89,7 +89,7 @@
     <header class="band"><h2>Gotcha: the Maven reflex</h2></header>
     <div class="body">
       <ul class="labels">
-        <li><span class="lab">What bit us:</span> on a Gradle project, the agent kept reaching for <code>mvn clean install</code>.</li>
+        <li><span class="lab">What bit us:</span> on a Gradle project, the agent kept reaching for Maven.</li>
         <li><span class="lab">The fix:</span> an <code>AGENTS.md</code> with project context.</li>
         <li><span class="lab lab-red">Lesson:</span> give agents an <code>AGENTS.md</code> with what they need <b>every</b> interaction &mdash; build &amp; test commands, how you write tests, version gotchas (&ldquo;don't use Java 21 features&rdquo;). Capture what they get wrong, not niche trivia.</li>
         <li><span class="lab lab-green">Also:</span> the standards are still settling &mdash; tooling isn't uniform yet.</li>
@@ -168,7 +168,7 @@
         <div class="sticky s-cyan"><span class="tape"></span><span class="s-h">Bounded tasks</span><span class="s-t">Independent, reviewable chunks &mdash; the unit you can hand off.</span></div>
         <div class="sticky s-green"><span class="tape"></span><span class="s-h">Define done</span><span class="s-t">The agent executes; you decide what "done" means.</span></div>
       </div>
-      <p class="note-line center">Spec it, bound it, define done &mdash; <b>that's</b> what makes it safe to hand off.</p>
+      <p class="note-line center">Spec it, scope it, define done &mdash; <b>that's</b> what makes it safe to hand off.</p>
     </div>
   </section>
 
@@ -308,7 +308,7 @@
       <ul class="labels">
         <li><span class="lab">The flip:</span> writing code is nearly free now &mdash; the scarce thing is <b>trusting</b> what comes back.</li>
         <li><span class="lab">The evidence:</span> GitHub has run <b>60M+</b> Copilot code reviews; AI-heavy teams merge far more code, but review time balloons &mdash; even METR couldn't measure a clean speedup in 2026.</li>
-        <li><span class="lab lab-green">The answer:</span> so <code>ship-feature</code> spends most of its steps on review &mdash; the gates, three scoped reviewers, and the bots on the PR.</li>
+        <li><span class="lab lab-green">The answer:</span> <code>ship-feature</code> spends most of its steps on review &mdash; the gates, three scoped reviewers, and the bots on the PR.</li>
       </ul>
       <p class="note-line center">Your job moves up the stack: <b>delegate, review, own.</b></p>
     </div>
@@ -316,23 +316,31 @@
 
   <!-- 23 CLOSING -->
   <section class="slide-closing ladder-slide" data-background-color="#051F52">
-    <h2 class="h-close">An empty project became a team of agents, and you know how to start.</h2>
+    <h2 class="h-close">An empty project became a team of agents &mdash; and you know how to start.</h2>
     <p class="close-body">Start small: pick one bounded task, let the assistant draft it, you review.</p>
-    <a class="repo-chip" href="https://github.com/kylehoehns/dugout">Fork github.com/kylehoehns/dugout and walk every level yourself.</a>
     <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
   </section>
 
   <!-- 25 CONNECT / LINKEDIN -->
   <section class="slide-connect ladder-slide" data-background-color="#051F52">
     <h2 class="h-close">Thanks for hanging out!</h2>
-    <div class="connect-row">
-      <div class="qr-box"><img src="qr.svg" alt="LinkedIn QR code for Kyle Hoehns"></div>
-      <div class="connect-text">
-        <p class="connect-lead">Questions? Let's hear them.</p>
-        <p class="handle">linkedin.com/in/kylehoehns</p>
-        <p class="muted">Scan to connect on LinkedIn &mdash; or fork the repo and walk every level yourself.</p>
-      </div>
+    <div class="connect-dual">
+      <figure class="qr-card">
+        <div class="qr-box"><img src="qr-github.svg" alt="QR code to github.com/kylehoehns/dugout"></div>
+        <figcaption class="qr-cap">
+          <span class="qr-lead">Fork the repo</span>
+          <span class="qr-sub">github.com/kylehoehns/dugout &mdash; walk every level yourself</span>
+        </figcaption>
+      </figure>
+      <figure class="qr-card">
+        <div class="qr-box"><img src="qr.svg" alt="LinkedIn QR code for Kyle Hoehns"></div>
+        <figcaption class="qr-cap">
+          <span class="qr-lead">Let's connect</span>
+          <span class="qr-sub">linkedin.com/in/kylehoehns</span>
+        </figcaption>
+      </figure>
     </div>
+    <p class="connect-q">Questions? Let's hear them.</p>
     <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
   </section>
 
@@ -413,6 +421,7 @@
 
   Reveal.initialize({
     width: 1280, height: 720, margin: 0, center: false,
+    minScale: 0.2, maxScale: 4.0,
     hash: true, slideNumber: false, controls: false, progress: false,
     transition: 'fade', transitionSpeed: 'fast',
     plugins: [ RevealNotes, RevealHighlight ]
