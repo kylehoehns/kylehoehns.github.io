@@ -128,7 +128,8 @@
 
 /* title slide */
 /* !important on display beats reveal's inline display:block on the present slide; scoped selector beats padding:0 reset */
-.reveal .slides > section.slide-title{ padding:0 80px; display:flex !important; flex-direction:column; justify-content:center; }
+/* bottom padding lifts the centered copy clear of the ambient terminal card */
+.reveal .slides > section.slide-title{ padding:0 80px 130px; display:flex !important; flex-direction:column; justify-content:center; }
 .logo{ position:absolute; top:54px; left:80px; }
 .logo img{ height:54px; display:block; }
 .slide-title h1{ color:#fff; font-size:66px; font-weight:900; line-height:1.03; max-width:1060px; }
@@ -138,9 +139,39 @@
 /* rule stops short of the dots so the dots cap the end of the line (dots span right:80px..176px) */
 .rule-light{ position:absolute; left:0; right:188px; bottom:88px; height:4px; background:#fff; }
 
+/* ── ambient terminal on the title slide (pre-talk loop) ── */
+.term{ position:absolute; left:80px; bottom:116px; width:640px; background:#03102E;
+  border:1px solid rgba(255,255,255,.16); border-radius:12px; overflow:hidden;
+  box-shadow:0 18px 44px rgba(0,0,0,.42); }
+.term-bar{ display:flex; align-items:center; gap:9px; padding:10px 14px; background:rgba(255,255,255,.06); }
+.term-bar i{ width:12px; height:12px; border-radius:50%; flex:0 0 auto; }
+.t-red{ background:var(--red); } .t-green{ background:var(--green); } .t-cyan{ background:var(--cyan); }
+.term-title{ margin-left:8px; color:#7F8DB0; font:700 13px/1 Consolas,Menlo,monospace; letter-spacing:.5px; }
+.term-body{ padding:14px 18px 16px; font:600 19px/1.5 Consolas,Menlo,monospace; color:#D6DEEA; height:96px; }
+.term-line{ white-space:pre-wrap; }
+.term-prompt{ color:var(--cyan); font-weight:800; }
+.term-cmd{ color:#fff; }
+.term-spin{ color:#8FA2C9; }
+.term-spin .term-frame{ color:var(--cyan); }
+.term-ok{ color:var(--green); font-weight:800; }
+.term-cursor{ display:inline-block; width:10px; height:21px; background:var(--cyan);
+  vertical-align:-3px; margin-left:3px; animation:curBlink 1.05s steps(1) infinite; }
+@keyframes curBlink{ 50%{ opacity:0; } }
+.slide-title.anim .term{ animation:riseIn .6s ease .85s both; }
+
+/* compact variant — Q&A loop in the connect slide's left column */
+.term-sm{ position:static; width:auto; }
+.term-sm .term-bar{ padding:8px 12px; }
+.term-sm .term-bar i{ width:10px; height:10px; }
+.term-sm .term-title{ font-size:12px; }
+.term-sm .term-body{ font-size:17px; height:84px; padding:12px 16px 14px; }
+.term-sm .term-cursor{ width:8px; height:18px; vertical-align:-2px; }
+.slide-connect.anim .term{ animation:riseIn .6s ease .8s both; }
+
 /* closing slide */
 .reveal .slides > section.slide-closing{ padding:0 80px; display:flex !important; flex-direction:column; justify-content:center; }
 .h-close{ color:#fff; font-size:46px; font-weight:800; line-height:1.12; max-width:1060px; margin:0 0 28px; }
+.slide-closing .h-close{ margin-bottom:52px; }
 .close-body{ color:#fff; font-size:27px; line-height:1.4; margin:6px 0; max-width:1020px; }
 .repo-chip{ display:inline-block; width:fit-content; margin-top:34px; background:var(--green); color:#fff !important;
   font-weight:800; font-size:22px; padding:15px 30px; border-radius:12px; text-decoration:none; }
@@ -148,6 +179,10 @@
 /* connect slide */
 .reveal .slides > section.slide-connect{ padding:0 80px; display:flex !important; flex-direction:column; justify-content:center; }
 .slide-connect .h-close{ margin-bottom:34px; }
+/* terminal left, QR codes right */
+.connect-split{ display:flex; align-items:center; gap:64px; margin:6px 0 30px; }
+.connect-split .connect-term{ flex:1 1 auto; min-width:0; }
+.connect-split .connect-dual{ flex:0 0 auto; gap:56px; margin:0; }
 .connect-row{ display:flex; align-items:center; gap:60px; }
 .qr-box{ width:250px; height:250px; border-radius:18px; background:#fff; flex:0 0 auto;
   display:flex; align-items:center; justify-content:center; }
@@ -164,7 +199,6 @@
 .qr-cap{ margin-top:18px; }
 .qr-lead{ display:block; color:#fff; font-size:26px; font-weight:800; }
 .qr-sub{ display:block; color:#AEB9CE; font-size:19px; line-height:1.35; margin-top:6px; max-width:300px; }
-.connect-q{ color:var(--cyan); font-size:26px; font-weight:700; text-align:center; margin:6px 0 0; }
 
 /* brand dots (shared) */
 .dots-right{ position:absolute; right:80px; bottom:78px; display:flex; gap:12px; }
@@ -255,12 +289,22 @@
 .slide-closing.anim .close-body{ animation:riseIn .55s ease .22s both; }
 .slide-closing.anim .repo-chip{ animation:popIn .55s cubic-bezier(.34,1.56,.64,1) .5s both; }
 
+/* finale ladder: slow full-rail sweep while each completed level pops in on the beat */
+.ladder-finale .rail-done{ transition-duration:1.9s; }
+.slide-closing.anim .ladder-finale .node{ animation:popIn .45s cubic-bezier(.34,1.56,.64,1) both; }
+.slide-closing.anim .ladder-finale .node:nth-child(1){ animation-delay:.10s; }
+.slide-closing.anim .ladder-finale .node:nth-child(2){ animation-delay:.40s; }
+.slide-closing.anim .ladder-finale .node:nth-child(3){ animation-delay:.70s; }
+.slide-closing.anim .ladder-finale .node:nth-child(4){ animation-delay:1.00s; }
+.slide-closing.anim .ladder-finale .node:nth-child(5){ animation-delay:1.30s; }
+.slide-closing.anim .ladder-finale .node:nth-child(6){ animation-delay:1.60s; }
+.slide-closing.anim .ladder-finale .node:nth-child(7){ animation-delay:1.90s; }
+
 /* connect slide: heading rises, QR pops, text rises in sequence */
 .slide-connect.anim .h-close{ animation:riseIn .6s ease both; }
 .slide-connect.anim .qr-card{ animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both; }
 .slide-connect.anim .qr-card:nth-child(1){ animation-delay:.28s; }
 .slide-connect.anim .qr-card:nth-child(2){ animation-delay:.42s; }
-.slide-connect.anim .connect-q{ animation:riseIn .5s ease .64s both; }
 
 /* ── context-window diagram: signal (main) vs noise (sub-agents) ── */
 .ctxwrap{ display:flex; flex-direction:column; align-items:center; gap:15px; margin-top:6px; }

@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>From Sidebar to Sub-Agents</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="vendor/reveal/reveal.min.css">
   <link rel="stylesheet" href="vendor/reveal/plugin/highlight/monokai.min.css">
   <link rel="stylesheet" href="vendor/lato.css">
@@ -21,6 +20,10 @@
     <p class="subtitle">A Live, Hands-On Intro to Building with AI Agents</p>
     <p class="meta">Kyle Hoehns &nbsp;·&nbsp; Source Allies</p>
     <p class="meta accent">CIJUG &nbsp;·&nbsp; July 16, 2026</p>
+    <div class="term" aria-hidden="true">
+      <div class="term-bar"><i class="t-red"></i><i class="t-green"></i><i class="t-cyan"></i><span class="term-title">kyle@dugout &mdash; zsh</span></div>
+      <div class="term-body"><div class="term-lines"></div></div>
+    </div>
     <div class="rule-light"></div>
     <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
   </section>
@@ -184,7 +187,7 @@
 
   <!-- SECTION SEPARATOR: Using it well -->
   <section class="slide-sep sep-green ladder-slide" data-background-color="#19B95C">
-    <div class="sep-band"><h2 class="sep-title">Where this goes</h2></div>
+    <div class="sep-band"><h2 class="sep-title">Zooming out</h2></div>
   </section>
 
   <!-- WHERE THIS GOES -1: the context window -->
@@ -319,29 +322,37 @@
   <section class="slide-closing ladder-slide" data-background-color="#051F52">
     <h2 class="h-close">An empty project became a team of agents &mdash; and you know how to start.</h2>
     <p class="close-body">Start small: pick one bounded task, let the assistant draft it, you review.</p>
-    <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
+    <!-- victory lap: the full ladder, every level lit (dots retired — the ladder is the footer here) -->
+    <div class="ladder ladder-finale" data-active="7"></div>
   </section>
 
   <!-- 25 CONNECT / LINKEDIN -->
   <section class="slide-connect ladder-slide" data-background-color="#051F52">
     <h2 class="h-close">Thanks for hanging out!</h2>
-    <div class="connect-dual">
-      <figure class="qr-card">
-        <div class="qr-box"><img src="qr-github.svg" alt="QR code to github.com/kylehoehns/dugout"></div>
-        <figcaption class="qr-cap">
-          <span class="qr-lead">Fork the repo</span>
-          <span class="qr-sub">github.com/kylehoehns/dugout &mdash; walk every level yourself</span>
-        </figcaption>
-      </figure>
-      <figure class="qr-card">
-        <div class="qr-box"><img src="qr.svg" alt="LinkedIn QR code for Kyle Hoehns"></div>
-        <figcaption class="qr-cap">
-          <span class="qr-lead">Let's connect</span>
-          <span class="qr-sub">linkedin.com/in/kylehoehns</span>
-        </figcaption>
-      </figure>
+    <div class="connect-split">
+      <div class="connect-term">
+        <div class="term term-sm" aria-hidden="true">
+          <div class="term-bar"><i class="t-red"></i><i class="t-green"></i><i class="t-cyan"></i><span class="term-title">kyle@dugout &mdash; q&amp;a</span></div>
+          <div class="term-body"><div class="term-lines"></div></div>
+        </div>
+      </div>
+      <div class="connect-dual">
+        <figure class="qr-card">
+          <div class="qr-box"><img src="qr-github.svg" alt="QR code to github.com/kylehoehns/dugout"></div>
+          <figcaption class="qr-cap">
+            <span class="qr-lead">Fork the repo</span>
+            <span class="qr-sub">github.com/kylehoehns/dugout &mdash; walk every level yourself</span>
+          </figcaption>
+        </figure>
+        <figure class="qr-card">
+          <div class="qr-box"><img src="qr.svg" alt="LinkedIn QR code for Kyle Hoehns"></div>
+          <figcaption class="qr-cap">
+            <span class="qr-lead">Let's connect</span>
+            <span class="qr-sub">linkedin.com/in/kylehoehns</span>
+          </figcaption>
+        </figure>
+      </div>
     </div>
-    <p class="connect-q">Questions? Let's hear them.</p>
     <div class="dots dots-right"><i class="d-red"></i><i class="d-green"></i><i class="d-cyan"></i></div>
   </section>
 
@@ -359,8 +370,9 @@
   function buildLadder(el){
     var active = el.getAttribute('data-active');
     var act = active === 'none' ? -1 : parseInt(active,10);
+    // act can exceed the last level (finale uses 7 = "everything done"); the rail caps at the last node
     var rail = '<div class="rail"><div class="rail-line"></div><div class="rail-done" style="width:'+
-      (act>0 ? (act*STEP) : 0)+'px"></div>';
+      (act>0 ? (Math.min(act, LEVELS.length-1)*STEP) : 0)+'px"></div>';
     var nodes = LEVELS.map(function(label,i){
       var cls = 'node';
       if(active!=='none'){ if(i<act) cls+=' done'; else if(i===act) cls+=' active'; else cls+=' future'; }
@@ -405,9 +417,11 @@
     var done = ladder.querySelector('.rail-done'); if(!done) return;
     var active = ladder.getAttribute('data-active');
     var act = active === 'none' ? -1 : parseInt(active,10);
-    var target = act > 0 ? act*STEP : 0;
+    var target = act > 0 ? Math.min(act, LEVELS.length-1)*STEP : 0;
+    // the finale sweeps the whole rail from zero — a victory lap, not a step up
+    var from = ladder.classList.contains('ladder-finale') ? 0 : prevDone;
     done.style.transition = 'none';
-    done.style.width = prevDone + 'px';
+    done.style.width = from + 'px';
     void done.offsetWidth;            // force reflow so the next change animates
     done.style.transition = '';
     done.style.width = target + 'px';
@@ -420,6 +434,123 @@
     sec.classList.remove('anim'); void sec.offsetWidth; sec.classList.add('anim');
   }
 
+  // --- ambient terminal loops (title slide while folks file in; connect slide during Q&A) ---
+  var SPIN = ['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏'];
+  // Claude Code's whimsical thinking verbs — shown while the fake command "runs"
+  var VERBS = ['Accomplishing','Actioning','Actualizing','Baking','Brewing','Calculating',
+    'Cerebrating','Churning','Clauding','Coalescing','Cogitating','Computing','Conjuring',
+    'Considering','Cooking','Crafting','Creating','Crunching','Deliberating','Determining',
+    'Doing','Effecting','Finagling','Forging','Forming','Generating','Hatching','Herding',
+    'Honking','Hustling','Ideating','Inferring','Manifesting','Marinating','Moseying',
+    'Mulling','Mustering','Musing','Noodling','Percolating','Pondering','Processing',
+    'Puttering','Reticulating','Ruminating','Schlepping','Shucking','Simmering','Smooshing',
+    'Spinning','Stewing','Synthesizing','Thinking','Transmuting','Vibing','Working'];
+  var TITLE_SCENES = [
+      // openers — crowd work while folks file in
+      {cmd:'claude "warm up the crowd"',            ok:'crowd warmed — talk starting soon'},
+      {cmd:'claude "find me a good seat"',          ok:'front row is open. no judgment'},
+      {cmd:'claude "sidebar to sub-agents?"',       ok:'7 levels. buckle up'},
+      {cmd:'claude "animate this slide"',           ok:'you’re looking at it'},
+      {cmd:'claude "silence the phones"',           ok:'phones silenced (probably)'},
+      // real-ish — plausible commands, honest punchlines
+      {cmd:'claude "write tests for OrderService"', ok:'12 tests, 84% coverage. ship it'},
+      {cmd:'claude "review my last commit"',        ok:'3 nits, 1 real bug. you’re welcome'},
+      {cmd:'claude "upgrade us to Java 25"',        ok:'done — it’s just void main() now'},
+      {cmd:'claude "fix the failing test"',         ok:'the test was right. the code wasn’t'},
+      {cmd:'claude "spawn the review team"',        ok:'3 reviewers hired. they all disagree'},
+      // dev-life sarcasm
+      {cmd:'claude "estimate this ticket"',         ok:'two weeks. everything is two weeks'},
+      {cmd:'claude "resolve the merge conflict"',   ok:'kept both sides. good luck'},
+      {cmd:'claude "explain this legacy code"',     ok:'not even I can do that'},
+      {cmd:'claude "write a commit message"',       ok:'"fix" — as is tradition'},
+      {cmd:'claude "update the jira ticket"',       ok:'moved to Done. nobody will check'},
+      {cmd:'claude "center this div"',              ok:'centered. only took the industry 20 years'},
+      {cmd:'claude "explain C# to a Java dev"',     ok:'it’s Java with PascalCase. next question'},
+      {cmd:'claude "read the docs for me"',         ok:'done. you weren’t going to anyway'}
+    ];
+    // Q&A deck — plays on the connect slide while questions run long
+  var QA_SCENES = [
+      // the opener thinks for a long beat — calm while real questions are happening
+      {cmd:'claude "any questions?"',              think:75, ok:'several hands detected. good luck'},
+      {cmd:'claude "take the hard questions"',     ok:'escalating to the human'},
+      {cmd:'claude "answer like a consultant"',    ok:'it depends'},
+      {cmd:'claude "summarize the talk"',          ok:'delegate, review, own'},
+      {cmd:'claude "what should I do first?"',     ok:'one bounded task. tonight'},
+      {cmd:'claude "fork the repo"',               ok:'scan the first QR over there →'},
+      {cmd:'claude "connect with kyle"',           ok:'far QR on the right →'},
+      {cmd:'claude "was that a good talk?"',       ok:'I’m contractually obligated to say yes'},
+      {cmd:'claude "wrap it up"',                  ok:'applause queued'}
+    ];
+
+  // one self-contained typing loop per terminal; scenes[0] always plays first
+  // after page load, then a shuffle-bag deals the rest (no repeats until the
+  // whole deck has played, never the same scene twice in a row)
+  function makeTermLoop(sel, scenes){
+    var lines = document.querySelector(sel);
+    if(!lines) return function(){};
+    var active = false, timer = null, bag = [], lastScene = null, opened = false;
+    function nextScene(){
+      if(!opened){ opened = true; lastScene = scenes[0]; return lastScene; } // pinned opener
+      if(!bag.length){
+        bag = scenes.slice();
+        for(var i = bag.length - 1; i > 0; i--){
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = bag[i]; bag[i] = bag[j]; bag[j] = t;
+        }
+        if(bag[0] === lastScene && bag.length > 1) bag.push(bag.shift());
+      }
+      lastScene = bag.shift();
+      return lastScene;
+    }
+    function wait(ms, fn){ timer = setTimeout(function(){ if(active) fn(); }, ms); }
+    function addLine(cls, html){
+      var d = document.createElement('div');
+      d.className = 'term-line' + (cls ? ' ' + cls : '');
+      d.innerHTML = html; lines.appendChild(d); return d;
+    }
+    function scene(){
+      lines.innerHTML = '';
+      var s = nextScene();
+      var line = addLine('', '<span class="term-prompt">$ </span><span class="term-cmd"></span><span class="term-cursor"></span>');
+      var cmdEl = line.querySelector('.term-cmd'), i = 0;
+      (function type(){
+        if(i < s.cmd.length){ cmdEl.textContent += s.cmd[i++]; wait(34 + Math.random()*46, type); }
+        else wait(650, run);
+      })();
+      function run(){
+        line.querySelector('.term-cursor').remove();
+        var verb = VERBS[Math.floor(Math.random()*VERBS.length)];
+        var sp = addLine('term-spin', '<span class="term-frame">'+SPIN[0]+'</span> <span class="term-verb">'+verb+'</span>…');
+        var frameEl = sp.querySelector('.term-frame'), verbEl = sp.querySelector('.term-verb');
+        // scenes can pin a long think (seconds) — otherwise a quick 2.5-4s spin
+        var f = 0, ticks = s.think ? Math.round(s.think*1000/85) : 28 + Math.floor(Math.random()*22);
+        // long thinks settle into a lazy verb swap (~9s) so they read as ambient, not busy
+        var swapEvery = s.think ? 108 : 16;
+        (function spin(){
+          frameEl.textContent = SPIN[++f % SPIN.length];
+          if(f % swapEvery === 0){ verbEl.textContent = VERBS[Math.floor(Math.random()*VERBS.length)]; } // swap verbs mid-run, like the real CLI
+          if(f < ticks) wait(85, spin); else done(sp);
+        })();
+      }
+      function done(sp){
+        sp.remove();
+        addLine('', '<span class="term-ok">✓</span> ' + s.ok);
+        wait(5200, scene);
+      }
+    }
+    return function(on){
+      if(on === active) return;
+      active = on; clearTimeout(timer);
+      if(on){ scene(); } else { lines.innerHTML = ''; }
+    };
+  }
+  var titleTerm = makeTermLoop('.slide-title .term-lines', TITLE_SCENES);
+  var qaTerm = makeTermLoop('.slide-connect .term-lines', QA_SCENES);
+  function termCtl(slide){
+    titleTerm(!!(slide && slide.classList.contains('slide-title')));
+    qaTerm(!!(slide && slide.classList.contains('slide-connect')));
+  }
+
   Reveal.initialize({
     width: 1280, height: 720, margin: 0, center: false,
     minScale: 0.2, maxScale: 4.0,
@@ -428,8 +559,8 @@
     plugins: [ RevealNotes, RevealHighlight ]
   });
 
-  Reveal.on('ready', function(e){ animateLadder(e.currentSlide); playEntrance(e.currentSlide); });
-  Reveal.on('slidechanged', function(e){ animateLadder(e.currentSlide); playEntrance(e.currentSlide); });
+  Reveal.on('ready', function(e){ animateLadder(e.currentSlide); playEntrance(e.currentSlide); termCtl(e.currentSlide); });
+  Reveal.on('slidechanged', function(e){ animateLadder(e.currentSlide); playEntrance(e.currentSlide); termCtl(e.currentSlide); });
 </script>
 </body>
 </html>
