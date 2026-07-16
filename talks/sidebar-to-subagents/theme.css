@@ -149,7 +149,7 @@
 .slide-title h1{ color:#fff; font-size:66px; font-weight:900; line-height:1.03; max-width:1060px; }
 .subtitle{ color:#fff; font-style:italic; font-size:28px; margin:26px 0 0; }
 .meta{ color:#C9D2E0; font-size:23px; margin:18px 0 0; }
-.meta.accent{ color:var(--cyan); margin-top:6px; }
+.meta.accent{ color:var(--cyan); margin-top:6px; font-weight:700; font-size:25px; }
 /* rule stops short of the dots so the dots cap the end of the line (dots span right:80px..176px) */
 .rule-light{ position:absolute; left:0; right:188px; bottom:88px; height:4px; background:#fff; }
 
