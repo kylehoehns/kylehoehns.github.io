@@ -452,34 +452,39 @@
       {cmd:'claude "sidebar to sub-agents?"',       ok:'7 levels. buckle up'},
       {cmd:'claude "animate this slide"',           ok:'you’re looking at it'},
       {cmd:'claude "silence the phones"',           ok:'phones silenced (probably)'},
-      // real-ish — plausible commands, honest punchlines
-      {cmd:'claude "write tests for OrderService"', ok:'12 tests, 84% coverage. ship it'},
-      {cmd:'claude "review my last commit"',        ok:'3 nits, 1 real bug. you’re welcome'},
       {cmd:'claude "upgrade us to Java 25"',        ok:'done — it’s just void main() now'},
-      {cmd:'claude "fix the failing test"',         ok:'the test was right. the code wasn’t'},
-      {cmd:'claude "spawn the review team"',        ok:'3 reviewers hired. they all disagree'},
       // dev-life sarcasm
       {cmd:'claude "estimate this ticket"',         ok:'two weeks. everything is two weeks'},
       {cmd:'claude "resolve the merge conflict"',   ok:'kept both sides. good luck'},
       {cmd:'claude "explain this legacy code"',     ok:'not even I can do that'},
-      {cmd:'claude "write a commit message"',       ok:'"fix" — as is tradition'},
+      {cmd:'claude "write a commit message"',       ok:'lets go with ... "fix"'},
       {cmd:'claude "update the jira ticket"',       ok:'moved to Done. nobody will check'},
       {cmd:'claude "center this div"',              ok:'centered. only took the industry 20 years'},
       {cmd:'claude "explain C# to a Java dev"',     ok:'it’s Java with PascalCase. next question'},
-      {cmd:'claude "read the docs for me"',         ok:'done. you weren’t going to anyway'}
+      {cmd:'claude "read the docs for me"',         ok:'done. you weren’t going to anyway'},
+      {cmd:'claude "make me a 10x engineer"',       ok:'spawned 10 of me. close enough'},
+      {cmd:'claude "write my standup update"',      ok:'"still working on it" — same as yesterday'},
+      {cmd:'claude "make it more enterprise"',      ok:'added 3 factories and a builder'},
+      {cmd:'claude "write the release notes"',      ok:'"bug fixes and improvements"'},
+      {cmd:'claude "schedule the deploy"',          ok:'Friday, 4:59 PM. bold'},
+      {cmd:'claude "how many tabs do I have open"', ok:'73. seek help'},
+      {cmd:'claude "make small talk"',              ok:'"so… what stack are you on?"'},
+      {cmd:'claude "am I in the right room?"',      ok:'yes. this is the Java one'},
+      {cmd:'claude "win me the raffle"',            ok:'rigging denied. stay till the end'},
+      {cmd:'claude "is there pizza left"',          ok:'checking… you should hurry'}
     ];
     // Q&A deck — plays on the connect slide while questions run long
   var QA_SCENES = [
       // the opener thinks for a long beat — calm while real questions are happening
       {cmd:'claude "any questions?"',              think:75, ok:'several hands detected. good luck'},
       {cmd:'claude "take the hard questions"',     ok:'escalating to the human'},
-      {cmd:'claude "answer like a consultant"',    ok:'it depends'},
       {cmd:'claude "summarize the talk"',          ok:'delegate, review, own'},
-      {cmd:'claude "what should I do first?"',     ok:'one bounded task. tonight'},
       {cmd:'claude "fork the repo"',               ok:'scan the first QR over there →'},
       {cmd:'claude "connect with kyle"',           ok:'far QR on the right →'},
       {cmd:'claude "was that a good talk?"',       ok:'I’m contractually obligated to say yes'},
-      {cmd:'claude "wrap it up"',                  ok:'applause queued'}
+      {cmd:'claude "wrap it up"',                  ok:'applause queued'},
+      {cmd:'claude "where are the slides?"',       ok:'kylehoehns.com/talks — already live'},
+      {cmd:'claude "rate this talk"',              ok:'5 stars. I may be biased'}
     ];
 
   // one self-contained typing loop per terminal; scenes[0] always plays first
