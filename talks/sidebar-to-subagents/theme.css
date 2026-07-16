@@ -154,10 +154,12 @@
 .rule-light{ position:absolute; left:0; right:188px; bottom:88px; height:4px; background:#fff; }
 
 /* ── ambient terminal on the title slide (pre-talk loop) ── */
-.term{ position:absolute; left:80px; bottom:116px; width:640px; background:#03102E;
-  border:1px solid rgba(255,255,255,.16); border-radius:12px; overflow:hidden;
-  box-shadow:0 18px 44px rgba(0,0,0,.42); }
-.term-bar{ display:flex; align-items:center; gap:9px; padding:10px 14px; background:rgba(255,255,255,.06); }
+/* projector-proof separation: dark values crush on a wall, so the card reads
+   by its bright border and light bar, not by fill difference */
+.term{ position:absolute; left:80px; bottom:116px; width:640px; background:#020A1E;
+  border:1.5px solid rgba(255,255,255,.34); border-radius:12px; overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,.55); }
+.term-bar{ display:flex; align-items:center; gap:9px; padding:10px 14px; background:rgba(255,255,255,.10); }
 .term-bar i{ width:12px; height:12px; border-radius:50%; flex:0 0 auto; }
 .t-red{ background:var(--red); } .t-green{ background:var(--green); } .t-cyan{ background:var(--cyan); }
 .term-title{ margin-left:8px; color:#7F8DB0; font:700 13px/1 'JetBrains Mono',Consolas,Menlo,monospace; letter-spacing:.5px; }
