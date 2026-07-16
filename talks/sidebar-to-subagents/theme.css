@@ -175,6 +175,19 @@
 @keyframes curBlink{ 50%{ opacity:0; } }
 .slide-title.anim .term{ animation:riseIn .6s ease .85s both; }
 
+/* "browser" window — embeds live sites on a normally styled navy slide, with clickable tabs */
+.browser{ position:absolute; left:70px; right:70px; top:216px; bottom:56px;
+  border-radius:12px; overflow:hidden; background:#fff;
+  border:1.5px solid rgba(255,255,255,.34); box-shadow:0 18px 50px rgba(0,0,0,.55);
+  display:flex; flex-direction:column; }
+.browser .term-bar{ background:#0B234F; }
+.btab{ margin-left:10px; color:#8FA2C9; font:700 14px/1 'JetBrains Mono',Consolas,Menlo,monospace;
+  background:rgba(255,255,255,.07); padding:7px 16px; border-radius:8px 8px 0 0; letter-spacing:.5px;
+  cursor:pointer; align-self:flex-end; margin-bottom:-10px; padding-bottom:14px; }
+.btab.active{ background:#fff; color:var(--navy); }
+.browser-frame{ flex:1 1 auto; width:100%; border:0; background:#fff; display:none; }
+.browser-frame.active{ display:block; }
+
 /* compact variant — Q&A loop in the connect slide's left column */
 .term-sm{ position:static; width:auto; }
 .term-sm .term-bar{ padding:8px 12px; }

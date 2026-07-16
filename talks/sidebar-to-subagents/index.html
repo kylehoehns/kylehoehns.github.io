@@ -47,6 +47,21 @@
     </div>
   </section>
 
+  <!-- CHECK THE WEATHER: live status pages for both clouds we're about to lean on -->
+  <section class="slide-ladder ladder-slide" data-background-color="#051F52" data-preload>
+    <p class="kicker">LIVE CODING AHEAD</p>
+    <h2 class="h-ladder">First, check the weather</h2>
+    <div class="browser">
+      <div class="term-bar">
+        <i class="t-red"></i><i class="t-green"></i><i class="t-cyan"></i>
+        <span class="btab active" data-frame="0">status.claude.com</span>
+        <span class="btab" data-frame="1">githubstatus.com</span>
+      </div>
+      <iframe class="browser-frame active" data-src="https://status.claude.com/" title="Claude status page"></iframe>
+      <iframe class="browser-frame" data-src="https://www.githubstatus.com/" title="GitHub status page"></iframe>
+    </div>
+  </section>
+
   <!-- SECTION SEPARATOR: Level Up -->
   <section class="slide-sep sep-cyan ladder-slide" data-background-color="#16BAED">
     <div class="sep-band"><h2 class="sep-title">Level Up</h2></div>
@@ -394,7 +409,7 @@
   // inject the Source Allies mark into the top-right corner of every slide except the title (#1)
   // separators get the white mark; everyone else gets the colored mark
   document.querySelectorAll('.slides > section').forEach(function(sec){
-    if(sec.classList.contains('slide-title')) return;
+    if(sec.classList.contains('slide-title') || sec.hasAttribute('data-background-iframe')) return; // iframe slides stay chrome-free
     var w = document.createElement('img'); w.className='corner-mark'; w.alt='';
     w.src = sec.classList.contains('slide-sep') ? 'sa-mark-white.png' : 'sa-mark.png';
     sec.appendChild(w);
@@ -548,6 +563,18 @@
       if(on){ scene(); } else { lines.innerHTML = ''; }
     };
   }
+  // browser-window tabs: clicking a tab shows its iframe
+  document.querySelectorAll('.browser').forEach(function(br){
+    var tabs = br.querySelectorAll('.btab'), frames = br.querySelectorAll('.browser-frame');
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        frames.forEach(function(f){ f.classList.remove('active'); });
+        tab.classList.add('active'); frames[i].classList.add('active');
+      });
+    });
+  });
+
   var titleTerm = makeTermLoop('.slide-title .term-lines', TITLE_SCENES);
   var qaTerm = makeTermLoop('.slide-connect .term-lines', QA_SCENES);
   function termCtl(slide){
