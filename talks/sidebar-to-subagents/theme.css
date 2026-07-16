@@ -351,33 +351,33 @@
 .slide-content.tree-slide .body{ padding-top:12px; padding-bottom:12px; }
 .runtree{ margin:2px 0 0; font-weight:800; }
 .rt-root{ display:flex; align-items:center; gap:15px; margin:0 0 1px; }
-.rt-cap{ font-size:18px; font-weight:700; color:var(--muted); }
+.rt-cap{ font-size:20px; font-weight:700; color:#2E4A78; }
 .rt-node{ display:inline-block; color:#fff; background:var(--navy); border-radius:9px;
-  padding:5px 14px; font-size:18px; line-height:1; white-space:nowrap; }
+  padding:5px 14px; font-size:21px; line-height:1; white-space:nowrap; }
 .rt-node.root{ background:var(--blue); }
 .rt-node.live{ background:var(--green); }
 .rt-node.loop{ background:var(--cyan); color:var(--navy); }
 .rt-node.done{ background:var(--green); }
-.rt-meta{ font-size:17px; font-weight:600; color:var(--muted); margin-left:13px; }
+.rt-meta{ font-size:19px; font-weight:600; color:#2E4A78; margin-left:13px; }
 .rt-meta code{ font-size:.85em; }
 .rt-list{ list-style:none; margin:1px 0 0 20px; padding:0; }
 .rt-list > li{ position:relative; padding:2px 0 2px 30px; margin:0; }
 .rt-list > li::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--light); }
-.rt-list > li::after{ content:""; position:absolute; left:0; top:17px; width:26px; height:3px; background:var(--light); }
-.rt-list > li:last-child::before{ height:17px; }
+.rt-list > li::after{ content:""; position:absolute; left:0; top:19px; width:26px; height:3px; background:var(--light); }
+.rt-list > li:last-child::before{ height:19px; }
 .rt-team{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:7px 0 1px 4px;
   padding-left:15px; border-left:3px solid #a7ddba; }
 .rt-leaf{ display:inline-block; color:#fff; background:var(--green); border-radius:8px;
-  padding:5px 12px; font-size:15px; line-height:1; font-weight:800; }
+  padding:6px 13px; font-size:17px; line-height:1; font-weight:800; }
 .rt-gate{ display:inline-block; background:#EAF0F8; color:var(--navy); border:1.5px solid var(--light);
-  border-radius:8px; padding:5px 11px; font-size:14px; font-weight:800; }
+  border-radius:8px; padding:6px 12px; font-size:16px; font-weight:800; }
 .tree-slide .note-line{ margin-top:5px; }
 
 /* --- ownership phases: you-led vs. agent-autonomous --- */
-.tree-slide .rt-node{ padding:3px 13px; }
-.tree-slide .rt-team{ margin-top:3px; margin-bottom:0; }
-.tree-slide .rt-leaf, .tree-slide .rt-gate{ padding-top:4px; padding-bottom:4px; }
-.rt-list > li{ padding-top:0; padding-bottom:0; }
+.tree-slide .rt-node{ padding:5px 15px; }
+.tree-slide .rt-team{ margin-top:4px; margin-bottom:0; }
+.tree-slide .rt-leaf, .tree-slide .rt-gate{ padding-top:5px; padding-bottom:5px; }
+.rt-list > li{ padding-top:3px; padding-bottom:3px; }
 /* colour the connector rail by who owns the step */
 .rt-list > li.own-you::before,  .rt-list > li.own-you::after{  background:var(--blue); }
 .rt-list > li.own-agent::before,.rt-list > li.own-agent::after{ background:#37a866; }
@@ -389,11 +389,11 @@
 .rt-handoff::before, .rt-handoff::after{ display:none !important; }
 .rt-phase{ margin-top:6px; }
 .rt-phase:first-child{ margin-top:0; }
-.rt-phase-badge{ display:inline-block; border-radius:7px; padding:4px 12px;
-  font-size:15px; font-weight:800; letter-spacing:.01em; }
+.rt-phase-badge{ display:inline-block; border-radius:7px; padding:5px 13px;
+  font-size:17px; font-weight:800; letter-spacing:.01em; }
 .rt-phase-badge.you{ background:var(--blue); color:#fff; }
 .rt-phase-badge.agent{ background:var(--green); color:#fff; }
-.rt-phase-t{ font-size:16px; font-weight:700; color:var(--muted); margin-left:12px; }
-.rt-handoff{ margin:3px 0 2px; }
-.rt-handoff-t{ display:inline-block; font-size:16px; font-weight:800; color:var(--blue);
-  background:#EAF0F8; border:1.5px solid #bcd0ec; border-radius:7px; padding:5px 13px; }
+.rt-phase-t{ font-size:18px; font-weight:700; color:#2E4A78; margin-left:12px; }
+.rt-handoff{ margin:4px 0 3px; }
+.rt-handoff-t{ display:inline-block; font-size:18px; font-weight:800; color:var(--blue);
+  background:#EAF0F8; border:1.5px solid #bcd0ec; border-radius:7px; padding:6px 14px; }
